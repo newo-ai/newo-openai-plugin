@@ -1,0 +1,20 @@
+{
+  "name": "newo",
+  "interface": {
+    "displayName": "Newo"
+  },
+  "plugins": [
+    {
+      "name": "newo-agent-builder",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}
