@@ -1,0 +1,9 @@
+interface:
+  display_name: "Newo Quality Review"
+  short_description: "Test the sandbox and review events, delivery and usage"
+  default_prompt: "Use $newo-quality to test my agent and investigate conversation errors."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "newo"
+      description: "Newo Customer MCP"

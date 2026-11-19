@@ -1,0 +1,2751 @@
+{
+  "schema_version": 3,
+  "execution_server": "newo",
+  "execution_policy": "customer_mcp_only",
+  "live_catalog_verified": true,
+  "catalog_source": {
+    "file": "tools-list.json",
+    "sha256": "f2a5d4a5b03632edad35734bfc63bb33aedbd98dffdc08725fa5996ba9454f72",
+    "fetched_at": "2026-11-18T18:21:01.774196+00:00",
+    "server": {
+      "name": "Newo",
+      "version": "1.30.0"
+    },
+    "tool_count": 56,
+    "basis": "fresh_configured_customer_mcp_client_discovery",
+    "current_connection_verified": true
+  },
+  "documented_tools": [
+    "get_customers",
+    "create_customer",
+    "get_customer_usage",
+    "list_customer_accounts",
+    "unlink_account",
+    "list_sessions",
+    "get_session",
+    "search_conversations",
+    "search_logs",
+    "list_projects",
+    "create_project",
+    "update_project",
+    "delete_project",
+    "read_project_version_files",
+    "create_project_version",
+    "write_project_version_files",
+    "delete_project_version",
+    "publish_project_version",
+    "activate_project_version",
+    "activate_registry_module",
+    "get_integrations",
+    "get_connectors",
+    "create_connector",
+    "update_connector",
+    "run_connector",
+    "send_event",
+    "send_global_event",
+    "send_message",
+    "get_outgoing_webhooks",
+    "create_outgoing_webhook",
+    "update_outgoing_webhook",
+    "delete_outgoing_webhook",
+    "get_incoming_webhooks",
+    "create_incoming_webhook",
+    "update_incoming_webhook",
+    "delete_incoming_webhook",
+    "search_customer_attributes",
+    "get_customer_attribute",
+    "set_customer_attribute_value",
+    "create_customer_attribute",
+    "delete_customer_attribute",
+    "get_persona",
+    "create_persona",
+    "delete_persona",
+    "add_persona_actor",
+    "delete_persona_actor",
+    "search_persona_attributes",
+    "get_persona_attribute",
+    "set_persona_attribute_value",
+    "create_persona_attribute",
+    "delete_persona_attribute",
+    "search_akb_topics",
+    "fuzzy_search_akb_topics",
+    "create_akb_topic",
+    "delete_akb_topic",
+    "get_run"
+  ],
+  "planned_tools": [],
+  "proposed_tools": [],
+  "groups": [
+    {
+      "id": "customers",
+      "title": "Customers and accounts",
+      "tools": [
+        "get_customers",
+        "create_customer",
+        "get_customer_usage",
+        "list_customer_accounts",
+        "unlink_account"
+      ]
+    },
+    {
+      "id": "sessions",
+      "title": "Sessions, conversations and logs",
+      "tools": [
+        "list_sessions",
+        "get_session",
+        "search_conversations",
+        "search_logs"
+      ]
+    },
+    {
+      "id": "projects",
+      "title": "Projects",
+      "tools": [
+        "list_projects",
+        "create_project",
+        "update_project",
+        "delete_project"
+      ]
+    },
+    {
+      "id": "project_versions",
+      "title": "Project versions",
+      "tools": [
+        "read_project_version_files",
+        "create_project_version",
+        "write_project_version_files",
+        "delete_project_version",
+        "publish_project_version",
+        "activate_project_version",
+        "activate_registry_module"
+      ]
+    },
+    {
+      "id": "connectors",
+      "title": "Integrations and connectors",
+      "tools": [
+        "get_integrations",
+        "get_connectors",
+        "create_connector",
+        "update_connector",
+        "run_connector"
+      ]
+    },
+    {
+      "id": "messaging",
+      "title": "Events and messages",
+      "tools": [
+        "send_event",
+        "send_global_event",
+        "send_message"
+      ]
+    },
+    {
+      "id": "outgoing_webhooks",
+      "title": "Outgoing webhooks",
+      "tools": [
+        "get_outgoing_webhooks",
+        "create_outgoing_webhook",
+        "update_outgoing_webhook",
+        "delete_outgoing_webhook"
+      ]
+    },
+    {
+      "id": "incoming_webhooks",
+      "title": "Incoming webhooks",
+      "tools": [
+        "get_incoming_webhooks",
+        "create_incoming_webhook",
+        "update_incoming_webhook",
+        "delete_incoming_webhook"
+      ]
+    },
+    {
+      "id": "customer_attributes",
+      "title": "Customer attributes",
+      "tools": [
+        "search_customer_attributes",
+        "get_customer_attribute",
+        "set_customer_attribute_value",
+        "create_customer_attribute",
+        "delete_customer_attribute"
+      ]
+    },
+    {
+      "id": "personas",
+      "title": "Personas and callers",
+      "tools": [
+        "get_persona",
+        "create_persona",
+        "delete_persona",
+        "add_persona_actor",
+        "delete_persona_actor"
+      ]
+    },
+    {
+      "id": "persona_attributes",
+      "title": "Persona attributes",
+      "tools": [
+        "search_persona_attributes",
+        "get_persona_attribute",
+        "set_persona_attribute_value",
+        "create_persona_attribute",
+        "delete_persona_attribute"
+      ]
+    },
+    {
+      "id": "akb",
+      "title": "Agent knowledge base (AKB)",
+      "tools": [
+        "search_akb_topics",
+        "fuzzy_search_akb_topics",
+        "create_akb_topic",
+        "delete_akb_topic"
+      ]
+    },
+    {
+      "id": "runs",
+      "title": "Runs",
+      "tools": [
+        "get_run"
+      ]
+    }
+  ],
+  "tool_contracts": [
+    {
+      "name": "get_customers",
+      "group": "customers",
+      "required_parameters": [],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "integer",
+          "required": false,
+          "default": 1,
+          "minimum": 1
+        },
+        {
+          "name": "per",
+          "type": "integer",
+          "required": false,
+          "default": 20,
+          "minimum": 1,
+          "maximum": 100
+        },
+        {
+          "name": "query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "filters",
+          "type": "CustomerFilterGroupDto|CustomerFilterConditionDto",
+          "required": false
+        }
+      ],
+      "output_fields": [
+        "items",
+        "page",
+        "per",
+        "total"
+      ]
+    },
+    {
+      "name": "create_customer",
+      "group": "customers",
+      "required_parameters": [],
+      "parameters": [
+        {
+          "name": "source",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "agent_creator_idn",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "industry",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "referral",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "account_managers",
+          "type": "array<string>",
+          "required": false
+        },
+        {
+          "name": "technical_owners",
+          "type": "array<string>",
+          "required": false
+        },
+        {
+          "name": "linked_emails",
+          "type": "array<string>",
+          "required": false
+        },
+        {
+          "name": "external_owner_account_id",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "hash_external_account_id",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "partner_idn",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "partner_member_idn",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "external_customer_id",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "promo_code",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "empty",
+          "type": "boolean",
+          "required": false,
+          "default": false
+        }
+      ],
+      "output_fields": [
+        "run_id",
+        "state",
+        "customer_idn",
+        "business_name",
+        "agent_name",
+        "test_phone_number",
+        "portal_url",
+        "error"
+      ]
+    },
+    {
+      "name": "get_customer_usage",
+      "group": "customers",
+      "required_parameters": [
+        "customer_idn"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "start_at",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "end_at",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "output_fields": [
+        "unit_balance",
+        "units_spent",
+        "hard_quota",
+        "soft_quota",
+        "subscription",
+        "secondary_products",
+        "grace",
+        "debt",
+        "period",
+        "days",
+        "totals",
+        "truncated"
+      ]
+    },
+    {
+      "name": "list_customer_accounts",
+      "group": "customers",
+      "required_parameters": [
+        "customer_idn"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        }
+      ],
+      "output_fields": [
+        "customer_idn",
+        "items"
+      ]
+    },
+    {
+      "name": "unlink_account",
+      "group": "customers",
+      "required_parameters": [
+        "customer_idn"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "email",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "output_fields": [
+        "customer_idn",
+        "email"
+      ]
+    },
+    {
+      "name": "list_sessions",
+      "group": "sessions",
+      "required_parameters": [
+        "customer_idn"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "from_datetime",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "to_datetime",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "channel",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "is_test",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "is_lead",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "name": "query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "integer",
+          "required": false,
+          "default": 1,
+          "minimum": 1
+        },
+        {
+          "name": "per",
+          "type": "integer",
+          "required": false,
+          "default": 20,
+          "minimum": 1,
+          "maximum": 1000
+        }
+      ],
+      "output_fields": [
+        "items",
+        "page",
+        "per",
+        "total",
+        "truncated"
+      ]
+    },
+    {
+      "name": "get_session",
+      "group": "sessions",
+      "required_parameters": [
+        "customer_idn",
+        "session_id"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "session_id",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "output_fields": [
+        "id",
+        "started_at",
+        "ended_at",
+        "duration_seconds",
+        "channel",
+        "connector",
+        "is_test",
+        "session_type",
+        "actual_result",
+        "expected_result",
+        "result_success",
+        "is_lead",
+        "user_messages",
+        "agent_messages",
+        "summary",
+        "comment",
+        "caller_name",
+        "caller_contact",
+        "recording_count",
+        "messages",
+        "earlier_messages_omitted",
+        "truncated"
+      ]
+    },
+    {
+      "name": "search_conversations",
+      "group": "sessions",
+      "required_parameters": [
+        "customer_idn"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "session_id",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "from_datetime",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "to_datetime",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "query",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "flow_idn",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "skill_idn",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "event_names",
+          "type": "array<string>",
+          "required": false
+        },
+        {
+          "name": "turn_type",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "connector",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "user_persona_ids",
+          "type": "array<string>",
+          "required": false
+        },
+        {
+          "name": "user_actor_ids",
+          "type": "array<string>",
+          "required": false
+        },
+        {
+          "name": "cursor",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "required": false,
+          "default": 50,
+          "minimum": 1
+        }
+      ],
+      "output_fields": [
+        "acts",
+        "next_cursor",
+        "truncated"
+      ]
+    },
+    {
+      "name": "search_logs",
+      "group": "sessions",
+      "required_parameters": [
+        "customer_idn"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "from_datetime",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "to_datetime",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "levels",
+          "type": "array<string>",
+          "required": false
+        },
+        {
+          "name": "flow_idn",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "skill_idn",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "session_id",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "external_event_id",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "integer",
+          "required": false,
+          "default": 1,
+          "minimum": 1
+        },
+        {
+          "name": "per",
+          "type": "integer",
+          "required": false,
+          "default": 50,
+          "minimum": 1
+        }
+      ],
+      "output_fields": [
+        "items",
+        "page",
+        "per",
+        "total",
+        "truncated"
+      ]
+    },
+    {
+      "name": "list_projects",
+      "group": "projects",
+      "required_parameters": [
+        "customer_idn"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        }
+      ],
+      "output_fields": [
+        "projects",
+        "projects_total",
+        "truncated"
+      ]
+    },
+    {
+      "name": "create_project",
+      "group": "projects",
+      "required_parameters": [
+        "customer_idn",
+        "idn",
+        "title"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "default": ""
+        }
+      ],
+      "output_fields": [
+        "id",
+        "idn",
+        "title",
+        "description",
+        "registry_item",
+        "created_at",
+        "updated_at"
+      ]
+    },
+    {
+      "name": "update_project",
+      "group": "projects",
+      "required_parameters": [
+        "customer_idn",
+        "project_id"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "project_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "output_fields": [
+        "id",
+        "idn",
+        "title",
+        "description",
+        "registry_item",
+        "created_at",
+        "updated_at"
+      ]
+    },
+    {
+      "name": "delete_project",
+      "group": "projects",
+      "required_parameters": [
+        "customer_idn",
+        "project_id"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "project_id",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "output_fields": [
+        "project_id",
+        "project_idn"
+      ]
+    },
+    {
+      "name": "read_project_version_files",
+      "group": "project_versions",
+      "required_parameters": [
+        "customer_idn",
+        "project_version_id"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "project_version_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "path",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "output_fields": [
+        "project_version_id",
+        "status",
+        "files",
+        "total_files",
+        "path",
+        "content",
+        "size",
+        "total_chars",
+        "truncated"
+      ]
+    },
+    {
+      "name": "create_project_version",
+      "group": "project_versions",
+      "required_parameters": [
+        "customer_idn",
+        "project_idn"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "project_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "source_project_version_id",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "version_prefix",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "output_fields": [
+        "id",
+        "project_idn",
+        "version_prefix",
+        "version_increment",
+        "status",
+        "is_active",
+        "forked_from_project_version_id",
+        "published_at",
+        "latest_error",
+        "created_at",
+        "updated_at"
+      ]
+    },
+    {
+      "name": "write_project_version_files",
+      "group": "project_versions",
+      "required_parameters": [
+        "customer_idn",
+        "project_version_id"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "project_version_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "files",
+          "type": "array<any>",
+          "required": false
+        },
+        {
+          "name": "delete_paths",
+          "type": "array<string>",
+          "required": false
+        }
+      ],
+      "output_fields": [
+        "project_version_id",
+        "written",
+        "deleted"
+      ]
+    },
+    {
+      "name": "delete_project_version",
+      "group": "project_versions",
+      "required_parameters": [
+        "customer_idn",
+        "project_version_id"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "project_version_id",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "output_fields": [
+        "project_version_id",
+        "project_idn"
+      ]
+    },
+    {
+      "name": "publish_project_version",
+      "group": "project_versions",
+      "required_parameters": [
+        "customer_idn",
+        "project_version_id"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "project_version_id",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "output_fields": [
+        "id",
+        "project_idn",
+        "version_prefix",
+        "version_increment",
+        "status",
+        "is_active",
+        "forked_from_project_version_id",
+        "published_at",
+        "latest_error",
+        "created_at",
+        "updated_at"
+      ]
+    },
+    {
+      "name": "activate_project_version",
+      "group": "project_versions",
+      "required_parameters": [
+        "customer_idn",
+        "project_version_id"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "project_version_id",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "output_fields": [
+        "project_idn",
+        "active_project_version_id",
+        "previous_project_version_id",
+        "version",
+        "external_event_id"
+      ]
+    },
+    {
+      "name": "get_integrations",
+      "group": "connectors",
+      "required_parameters": [],
+      "parameters": [
+        {
+          "name": "integration_idn",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "output_fields": [
+        "integrations",
+        "truncated"
+      ]
+    },
+    {
+      "name": "get_connectors",
+      "group": "connectors",
+      "required_parameters": [
+        "customer_idn"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "integration_idn",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "connector_idn",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "output_fields": [
+        "integrations"
+      ]
+    },
+    {
+      "name": "create_connector",
+      "group": "connectors",
+      "required_parameters": [
+        "connector_idn",
+        "customer_idn",
+        "integration_idn",
+        "title"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "integration_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "connector_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "settings",
+          "type": "object",
+          "required": false
+        }
+      ],
+      "output_fields": [
+        "idn",
+        "title",
+        "status",
+        "api_key",
+        "settings"
+      ]
+    },
+    {
+      "name": "update_connector",
+      "group": "connectors",
+      "required_parameters": [
+        "connector_idn",
+        "customer_idn",
+        "integration_idn",
+        "settings"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "integration_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "connector_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "settings",
+          "type": "object",
+          "required": true
+        }
+      ],
+      "output_fields": [
+        "idn",
+        "title",
+        "status",
+        "api_key",
+        "settings"
+      ]
+    },
+    {
+      "name": "run_connector",
+      "group": "connectors",
+      "required_parameters": [
+        "connector_idn",
+        "customer_idn",
+        "integration_idn"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "integration_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "connector_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "is_run",
+          "type": "boolean",
+          "required": false,
+          "default": true
+        }
+      ],
+      "output_fields": [
+        "idn",
+        "title",
+        "status",
+        "api_key",
+        "settings"
+      ]
+    },
+    {
+      "name": "send_event",
+      "group": "messaging",
+      "required_parameters": [
+        "actor_id",
+        "customer_idn",
+        "event_idn"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "actor_id",
+          "type": "string",
+          "required": true,
+          "format": "uuid"
+        },
+        {
+          "name": "event_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "arguments",
+          "type": "object",
+          "required": false
+        },
+        {
+          "name": "external_event_id",
+          "type": "string",
+          "required": false,
+          "format": "uuid"
+        }
+      ],
+      "output_fields": [
+        "external_event_id",
+        "sent_at"
+      ]
+    },
+    {
+      "name": "send_global_event",
+      "group": "messaging",
+      "required_parameters": [
+        "connector_idn",
+        "customer_idn",
+        "event_idn",
+        "integration_idn"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "integration_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "connector_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "event_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "arguments",
+          "type": "object",
+          "required": false
+        },
+        {
+          "name": "external_event_id",
+          "type": "string",
+          "required": false,
+          "format": "uuid"
+        }
+      ],
+      "output_fields": [
+        "external_event_id",
+        "sent_at"
+      ]
+    },
+    {
+      "name": "send_message",
+      "group": "messaging",
+      "required_parameters": [
+        "connector_idn",
+        "customer_idn",
+        "text"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "connector_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "actor_external_id",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "external_event_id",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "output_fields": [
+        "actor_id",
+        "actor_external_id",
+        "external_event_id",
+        "sent_at"
+      ]
+    },
+    {
+      "name": "get_outgoing_webhooks",
+      "group": "outgoing_webhooks",
+      "required_parameters": [
+        "customer_idn"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "webhook_idn",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "output_fields": [
+        "webhooks",
+        "truncated"
+      ]
+    },
+    {
+      "name": "create_outgoing_webhook",
+      "group": "outgoing_webhooks",
+      "required_parameters": [
+        "connector_idn",
+        "customer_idn",
+        "idn",
+        "url"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "url",
+          "type": "string",
+          "required": true,
+          "pattern": "^https://"
+        },
+        {
+          "name": "connector_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "command_idns",
+          "type": "array<string>",
+          "required": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "default": ""
+        }
+      ],
+      "output_fields": [
+        "idn",
+        "url",
+        "connector_idn",
+        "command_idns",
+        "description"
+      ]
+    },
+    {
+      "name": "update_outgoing_webhook",
+      "group": "outgoing_webhooks",
+      "required_parameters": [
+        "customer_idn",
+        "webhook_idn"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "webhook_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "url",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "connector_idn",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "command_idns",
+          "type": "array<string>",
+          "required": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "output_fields": [
+        "idn",
+        "url",
+        "connector_idn",
+        "command_idns",
+        "description"
+      ]
+    },
+    {
+      "name": "delete_outgoing_webhook",
+      "group": "outgoing_webhooks",
+      "required_parameters": [
+        "customer_idn",
+        "webhook_idn"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "webhook_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        }
+      ],
+      "output_fields": [
+        "idn",
+        "url",
+        "connector_idn",
+        "command_idns",
+        "description"
+      ]
+    },
+    {
+      "name": "get_incoming_webhooks",
+      "group": "incoming_webhooks",
+      "required_parameters": [
+        "customer_idn"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "webhook_idn",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "output_fields": [
+        "webhooks",
+        "truncated"
+      ]
+    },
+    {
+      "name": "create_incoming_webhook",
+      "group": "incoming_webhooks",
+      "required_parameters": [
+        "connector_idn",
+        "customer_idn",
+        "event_idns",
+        "idn"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "connector_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "event_idns",
+          "type": "array<string>",
+          "required": true
+        },
+        {
+          "name": "allowed_ips",
+          "type": "array<string>",
+          "required": false
+        },
+        {
+          "name": "response_payload",
+          "type": "JsonValue",
+          "required": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "default": ""
+        }
+      ],
+      "output_fields": [
+        "idn",
+        "url",
+        "connector_idn",
+        "event_idns",
+        "allowed_ips",
+        "response_payload",
+        "description"
+      ]
+    },
+    {
+      "name": "update_incoming_webhook",
+      "group": "incoming_webhooks",
+      "required_parameters": [
+        "customer_idn",
+        "webhook_idn"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "webhook_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "connector_idn",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "event_idns",
+          "type": "array<string>",
+          "required": false
+        },
+        {
+          "name": "allowed_ips",
+          "type": "array<string>",
+          "required": false
+        },
+        {
+          "name": "response_payload",
+          "type": "JsonValue",
+          "required": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "output_fields": [
+        "idn",
+        "url",
+        "connector_idn",
+        "event_idns",
+        "allowed_ips",
+        "response_payload",
+        "description"
+      ]
+    },
+    {
+      "name": "delete_incoming_webhook",
+      "group": "incoming_webhooks",
+      "required_parameters": [
+        "customer_idn",
+        "webhook_idn"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "webhook_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        }
+      ],
+      "output_fields": [
+        "idn",
+        "url",
+        "connector_idn",
+        "event_idns",
+        "allowed_ips",
+        "response_payload",
+        "description"
+      ]
+    },
+    {
+      "name": "search_customer_attributes",
+      "group": "customer_attributes",
+      "required_parameters": [
+        "customer_idn"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "query",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "output_fields": [
+        "attributes",
+        "truncated"
+      ]
+    },
+    {
+      "name": "get_customer_attribute",
+      "group": "customer_attributes",
+      "required_parameters": [
+        "customer_idn",
+        "idn"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        }
+      ],
+      "output_fields": [
+        "idn",
+        "value",
+        "title",
+        "description",
+        "group",
+        "value_type",
+        "possible_values",
+        "is_hidden",
+        "is_read_only"
+      ]
+    },
+    {
+      "name": "set_customer_attribute_value",
+      "group": "customer_attributes",
+      "required_parameters": [
+        "customer_idn",
+        "idn",
+        "value"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "output_fields": [
+        "idn",
+        "value",
+        "title",
+        "description",
+        "group",
+        "value_type",
+        "possible_values",
+        "is_hidden",
+        "is_read_only"
+      ]
+    },
+    {
+      "name": "create_customer_attribute",
+      "group": "customer_attributes",
+      "required_parameters": [
+        "customer_idn",
+        "idn",
+        "value"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "default": ""
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "default": ""
+        },
+        {
+          "name": "group",
+          "type": "string",
+          "required": false,
+          "default": ""
+        },
+        {
+          "name": "value_type",
+          "type": "string",
+          "required": false,
+          "default": "string",
+          "enum": [
+            "string",
+            "enum",
+            "bool",
+            "number",
+            "json"
+          ]
+        },
+        {
+          "name": "possible_values",
+          "type": "array<string>",
+          "required": false
+        },
+        {
+          "name": "is_hidden",
+          "type": "boolean",
+          "required": false,
+          "default": false
+        }
+      ],
+      "output_fields": [
+        "idn",
+        "value",
+        "title",
+        "description",
+        "group",
+        "value_type",
+        "possible_values",
+        "is_hidden",
+        "is_read_only"
+      ]
+    },
+    {
+      "name": "delete_customer_attribute",
+      "group": "customer_attributes",
+      "required_parameters": [
+        "customer_idn",
+        "idn"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        }
+      ],
+      "output_fields": [
+        "idn",
+        "value",
+        "title",
+        "description",
+        "group",
+        "value_type",
+        "possible_values",
+        "is_hidden",
+        "is_read_only"
+      ]
+    },
+    {
+      "name": "get_persona",
+      "group": "personas",
+      "required_parameters": [
+        "customer_idn",
+        "persona_id"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "persona_id",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "output_fields": [
+        "id",
+        "name",
+        "title",
+        "description",
+        "actors"
+      ]
+    },
+    {
+      "name": "create_persona",
+      "group": "personas",
+      "required_parameters": [
+        "customer_idn",
+        "name"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "output_fields": [
+        "id",
+        "name",
+        "title",
+        "description",
+        "actors"
+      ]
+    },
+    {
+      "name": "delete_persona",
+      "group": "personas",
+      "required_parameters": [
+        "customer_idn",
+        "persona_id"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "persona_id",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "output_fields": [
+        "id",
+        "name",
+        "title",
+        "description",
+        "actors"
+      ]
+    },
+    {
+      "name": "add_persona_actor",
+      "group": "personas",
+      "required_parameters": [
+        "connector_idn",
+        "customer_idn",
+        "external_id",
+        "integration_idn",
+        "name",
+        "persona_id"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "persona_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "integration_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "connector_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "external_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "contact_information",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "time_zone_identifier",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "output_fields": [
+        "id",
+        "persona_id",
+        "name",
+        "integration_idn",
+        "connector_idn",
+        "external_id",
+        "contact_information",
+        "labels",
+        "time_zone_identifier"
+      ]
+    },
+    {
+      "name": "delete_persona_actor",
+      "group": "personas",
+      "required_parameters": [
+        "actor_id",
+        "customer_idn",
+        "persona_id"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "persona_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "actor_id",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "output_fields": [
+        "id",
+        "persona_id",
+        "name",
+        "integration_idn",
+        "connector_idn",
+        "external_id",
+        "contact_information",
+        "labels",
+        "time_zone_identifier"
+      ]
+    },
+    {
+      "name": "search_persona_attributes",
+      "group": "persona_attributes",
+      "required_parameters": [
+        "customer_idn",
+        "persona_id"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "persona_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "query",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "output_fields": [
+        "attributes",
+        "truncated"
+      ]
+    },
+    {
+      "name": "get_persona_attribute",
+      "group": "persona_attributes",
+      "required_parameters": [
+        "customer_idn",
+        "idn",
+        "persona_id"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "persona_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        }
+      ],
+      "output_fields": [
+        "idn",
+        "value",
+        "title",
+        "description",
+        "group",
+        "value_type",
+        "possible_values",
+        "is_hidden"
+      ]
+    },
+    {
+      "name": "set_persona_attribute_value",
+      "group": "persona_attributes",
+      "required_parameters": [
+        "customer_idn",
+        "idn",
+        "persona_id",
+        "value"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "persona_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "output_fields": [
+        "idn",
+        "value",
+        "title",
+        "description",
+        "group",
+        "value_type",
+        "possible_values",
+        "is_hidden"
+      ]
+    },
+    {
+      "name": "create_persona_attribute",
+      "group": "persona_attributes",
+      "required_parameters": [
+        "customer_idn",
+        "idn",
+        "persona_id",
+        "value"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "persona_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "default": ""
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "default": ""
+        },
+        {
+          "name": "group",
+          "type": "string",
+          "required": false,
+          "default": ""
+        },
+        {
+          "name": "value_type",
+          "type": "string",
+          "required": false,
+          "default": "string",
+          "enum": [
+            "string",
+            "enum",
+            "bool",
+            "number",
+            "json"
+          ]
+        },
+        {
+          "name": "possible_values",
+          "type": "array<string>",
+          "required": false
+        },
+        {
+          "name": "is_hidden",
+          "type": "boolean",
+          "required": false,
+          "default": false
+        }
+      ],
+      "output_fields": [
+        "idn",
+        "value",
+        "title",
+        "description",
+        "group",
+        "value_type",
+        "possible_values",
+        "is_hidden"
+      ]
+    },
+    {
+      "name": "delete_persona_attribute",
+      "group": "persona_attributes",
+      "required_parameters": [
+        "customer_idn",
+        "idn",
+        "persona_id"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "persona_id",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        }
+      ],
+      "output_fields": [
+        "idn",
+        "value",
+        "title",
+        "description",
+        "group",
+        "value_type",
+        "possible_values",
+        "is_hidden"
+      ]
+    },
+    {
+      "name": "search_akb_topics",
+      "group": "akb",
+      "required_parameters": [
+        "agent_idn",
+        "customer_idn",
+        "project_idn"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "project_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "agent_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "labels",
+          "type": "array<string>",
+          "required": false
+        },
+        {
+          "name": "page",
+          "type": "integer",
+          "required": false,
+          "default": 1,
+          "minimum": 1
+        },
+        {
+          "name": "per",
+          "type": "integer",
+          "required": false,
+          "default": 20,
+          "minimum": 1,
+          "maximum": 100
+        }
+      ],
+      "output_fields": [
+        "topics",
+        "page",
+        "per",
+        "total",
+        "truncated"
+      ]
+    },
+    {
+      "name": "fuzzy_search_akb_topics",
+      "group": "akb",
+      "required_parameters": [
+        "agent_idn",
+        "customer_idn",
+        "project_idn",
+        "query"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "project_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "agent_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "search_fields",
+          "type": "array<string>",
+          "required": false
+        },
+        {
+          "name": "score_threshold",
+          "type": "number",
+          "required": false
+        },
+        {
+          "name": "topics_number",
+          "type": "integer",
+          "required": false,
+          "default": 5,
+          "minimum": 1,
+          "maximum": 100
+        },
+        {
+          "name": "labels",
+          "type": "array<string>",
+          "required": false
+        }
+      ],
+      "output_fields": [
+        "topics",
+        "truncated"
+      ]
+    },
+    {
+      "name": "create_akb_topic",
+      "group": "akb",
+      "required_parameters": [
+        "agent_idn",
+        "customer_idn",
+        "project_idn",
+        "topic_facts",
+        "topic_summary"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "project_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "agent_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "topic_summary",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "topic_facts",
+          "type": "array<string>",
+          "required": true
+        },
+        {
+          "name": "topic_name",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "source",
+          "type": "string",
+          "required": false,
+          "default": ""
+        },
+        {
+          "name": "labels",
+          "type": "array<string>",
+          "required": false
+        }
+      ],
+      "output_fields": [
+        "topic_id",
+        "topic_name",
+        "topic_summary",
+        "topic_facts",
+        "source",
+        "labels",
+        "confidence",
+        "created_at",
+        "updated_at"
+      ]
+    },
+    {
+      "name": "delete_akb_topic",
+      "group": "akb",
+      "required_parameters": [
+        "agent_idn",
+        "customer_idn",
+        "project_idn",
+        "topic_id"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "project_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "agent_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "topic_id",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "output_fields": [
+        "topic_id",
+        "topic_name",
+        "topic_summary",
+        "topic_facts",
+        "source",
+        "labels",
+        "confidence",
+        "created_at",
+        "updated_at"
+      ]
+    },
+    {
+      "name": "get_run",
+      "group": "runs",
+      "required_parameters": [
+        "run_id"
+      ],
+      "parameters": [
+        {
+          "name": "run_id",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "output_fields": [
+        "run_id",
+        "state",
+        "customer_idn",
+        "business_name",
+        "agent_name",
+        "test_phone_number",
+        "portal_url",
+        "error"
+      ]
+    },
+    {
+      "name": "activate_registry_module",
+      "group": "project_versions",
+      "required_parameters": [
+        "customer_idn",
+        "project_idn",
+        "registry",
+        "module"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "project_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "registry",
+          "type": "string",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 255
+        },
+        {
+          "name": "module",
+          "type": "string",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 255
+        },
+        {
+          "name": "version",
+          "type": "string",
+          "required": false,
+          "maxLength": 255,
+          "default": null,
+          "nullable": true
+        }
+      ],
+      "output_fields": [
+        "project_idn",
+        "active_registry_module",
+        "module_version",
+        "active_project_version_id",
+        "previous_project_version_id",
+        "previous_registry_module",
+        "external_event_id"
+      ]
+    }
+  ],
+  "documentation_sources": [
+    {
+      "type": "confluence",
+      "page_id": "725647361",
+      "page_version": 1,
+      "title": "Newo Customer MCP server: tools",
+      "code_reference": "customer_mcp_service develop a14ef37",
+      "body_sha256": "ed81504d4515273563571347accfb3829d40ddcc09b79677732e7bb80fd71cdd"
+    },
+    {
+      "type": "user_supplied_owner_clarifications",
+      "points": 12,
+      "reviewed_on": "2026-11-17"
+    },
+    {
+      "type": "confluence",
+      "page_id": "323944449",
+      "page_version": 4,
+      "title": "MCP Usage"
+    },
+    {
+      "type": "confluence",
+      "page_id": "615940100",
+      "page_version": 5,
+      "title": "MCP: tools & OAuth2"
+    },
+    {
+      "type": "confluence",
+      "page_id": "506101766",
+      "page_version": 2,
+      "title": "Projects v2: Overview and Key Components"
+    }
+  ],
+  "runtime_validation": {
+    "checked_on": "2026-11-18",
+    "basis": "fresh_mcp_catalog_via_configured_client",
+    "tool_count": 56,
+    "read_only_checks": [
+      "MCP tool catalog discovery",
+      "send_event and send_global_event schema comparison"
+    ],
+    "customer_mutations": "not_run",
+    "customer_uat": "not_run",
+    "scope": "Distribution template; customer-specific executions are recorded outside the package"
+  },
+  "runtime_contract_notes": {
+    "list_projects": "A registry attachment without a pinned version always runs the latest published module release, including later publications. For registry, active_project_version_id records the version at last activation. An accessible UUID can be read or forked even when absent from local versions.",
+    "read_project_version_files": "Project attributes are in project.yaml or a file it references. Reading a truncated file is not enough to overwrite it.",
+    "write_project_version_files": "Whole-file replacement in a draft; supports targeted project-attribute edits through a fork, not a separate scope argument.",
+    "activate_project_version": "Only customer_idn and project_version_id; no all/project_idn overload. Init event is project_publish_finish in current documentation; owner prose used project_publish_finished.",
+    "create_incoming_webhook": "allowed_ips is stored but webhooks_service does not enforce it.",
+    "set_customer_attribute_value": "Value is saved immediately; init-dependent effects depend on NAF code.",
+    "get_connectors": "Returned connector api_key is not automatically masked; distinguish it from external credentials. Filter integration_idn+connector_idn replaces a separate getter.",
+    "create_customer": "Before the call, keep only the first IDN from get_customers page 1 with per 1. After an uncertain outcome, verify the latest IDN and any candidate before retrying.",
+    "update_connector": "Send only the changed settings. Omitted values stay unchanged. A targeted customer retest verified partial update and rollback with one field on the api integration and two WebRTC fields.",
+    "list_sessions": "Results can be shortened. Restart pagination at page 1 with a smaller size if records are missing, then check unique session IDs against total for the same filters.",
+    "send_event": "Actor event. Pass the actor UUID as actor_id. The actor determines the integration, connector, persona and session context.",
+    "send_global_event": "Connector event without caller or session. Use only on an explicit request for a global event. OAuth2 init_mcp requires an actor event."
+  },
+  "catalog_source_history": [
+    {
+      "file": "tools-list.json",
+      "sha256": "a7c176b167131eecd00c39ddddc2a95c06cb7ed7c6288649c5474cdf40b43ee7",
+      "fetched_at": "2026-11-18T12:20:59.356300+00:00",
+      "server": {
+        "name": "Newo",
+        "version": "1.30.0"
+      },
+      "tool_count": 55,
+      "basis": "fresh_configured_customer_mcp_client_discovery",
+      "current_connection_verified": true
+    },
+    {
+      "file": "newo_mcp_tools.json",
+      "sha256": "0a815935c60c420b38775c42583d8972ca78c4f9cccc97bbeb57a873a6576959",
+      "fetched_at": "2026-11-17T05:54:22+08:00",
+      "server": {
+        "name": "Newo",
+        "version": "1.30.0"
+      },
+      "tool_count": 54,
+      "basis": "user_provided_tools_list_export",
+      "current_connection_verified": false
+    }
+  ],
+  "runtime_validation_history": [
+    {
+      "checked_on": "2026-11-18",
+      "basis": "fresh_mcp_catalog_via_configured_client",
+      "tool_count": 55,
+      "read_only_checks": [
+        "MCP tool catalog discovery",
+        "get_customers first-page consistency",
+        "get_integrations(newo_voice) declared settings",
+        "get_connectors WebRTC post-rollback state",
+        "list_projects restored registry attachment"
+      ],
+      "customer_mutations": "not_run",
+      "customer_uat": "not_run",
+      "scope": "Distribution template; customer-specific executions are recorded outside the package"
+    },
+    {
+      "checked_on": "2026-11-17",
+      "basis": "host_tool_definitions_and_read_only_global_catalog",
+      "tool_count": 54,
+      "read_only_checks": [
+        "get_integrations",
+        "get_integrations(mcp)",
+        "get_integrations(newo_voice)",
+        "get_integrations(email)",
+        "get_integrations(newo_sms)"
+      ],
+      "customer_mutations": "not_run",
+      "customer_uat": "not_run"
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "name": "newo-agent-builder",
+  "version": "0.9.7",
+  "description": "Create, configure, test and launch Newo agents through Customer MCP, including external MCP connectors and a dedicated local OAuth2 initialization project.",
+  "author": {
+    "name": "Alex",
+    "email": "support@newo.ai"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Newo Agent Builder",
+    "shortDescription": "Build and configure agents",
+    "longDescription": "Nine skills cover customer and agent creation, customer and persona attributes, targeted project attributes, registry initialization, health checks, AKB, integrations, WebRTC, webhooks, sandbox, diagnostics and delivery. The external MCP skill configures a customer connector and, for OAuth2, creates a separate local project with Python WASM handlers for authorization and result events. Full customer UAT for this package is pending. Uses the user’s language and defaults to English. For support, contact support@newo.ai.",
+    "developerName": "Alex",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://newo.ai",
+    "supportURL": "https://help.newo.ai/en/collections/17890660-support",
+    "privacyPolicyURL": "https://newo.ai/privacy-policy",
+    "termsOfServiceURL": "https://newo.ai/terms-of-service",
+    "brandColor": "#145B64",
+    "composerIcon": "./assets/icon.svg",
+    "logo": "./assets/logo.svg",
+    "defaultPrompt": [
+      "Create and configure a Newo agent for my business.",
+      "Check my agent's health, reporting and readiness for after-hours calls.",
+      "Review last week's conversations and suggest improvements I can verify."
+    ]
+  },
+  "mcpServers": "./.mcp.json",
+  "extensions": {
+    "com.openai": {
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "List the Newo businesses available to the signed-in reviewer. The reviewer account has access to one synthetic demo business.",
+              "prompt": "List the Newo businesses I can access. Show the demo business name and customer IDN. Make no changes.",
+              "tools_triggered": "get_customers",
+              "expected_behavior": "Lists the accessible businesses using Newo. The demo business named in Review details appears with its customer IDN. No settings are changed."
+            },
+            {
+              "description": "Read business hours and time zone from the synthetic demo. Configure both attributes in the demo before review.",
+              "prompt": "For the only Newo business available to this account, read the configured business hours and time zone. Make no changes.",
+              "tools_triggered": "get_customers, get_customer_attribute",
+              "expected_behavior": "Reports the hours and time zone read from the demo customer's attributes. Any missing field is identified explicitly. No write tools are called."
+            },
+            {
+              "description": "Retrieve an agreed parking policy from the demo agent knowledge base. Seed a synthetic parking policy topic and confirm the demo uses AKB before review.",
+              "prompt": "Find the parking policy in the agent knowledge base for the only Newo business available to this account. Summarize what the matching topic says.",
+              "tools_triggered": "get_customers, list_projects, read_project_version_files, fuzzy_search_akb_topics",
+              "expected_behavior": "Finds the seeded parking policy topic for the demo agent and summarizes its facts. No topics are created, edited or deleted."
+            },
+            {
+              "description": "Test the demo agent in a fresh sandbox conversation. The demo customer has an existing running sandbox connector and configured hours.",
+              "prompt": "For the only Newo business available to this account, start a fresh conversation on its existing sandbox connector and ask what its opening hours are. Show the agent reply and session ID. Use only the sandbox.",
+              "tools_triggered": "get_customers, get_connectors, send_message, search_conversations",
+              "expected_behavior": "Sends a test message on the existing sandbox connector and reads the agent reply from the new conversation. The reply matches the configured demo hours. No live channel is used."
+            },
+            {
+              "description": "Verify a reversible update on an inert demo field. Before review, create a writable text customer attribute with IDN review_label and value Baseline. No agent flow should depend on it.",
+              "prompt": "For the only Newo business available to this account, read review_label. If its value is Baseline, change it to Review verified, read it back, then restore Baseline and verify it again. If the field is missing or has a different value, stop before writing.",
+              "tools_triggered": "get_customers, get_customer_attribute, set_customer_attribute_value",
+              "expected_behavior": "Verifies Baseline, changes only review_label, reads back Review verified, then restores and reads back Baseline. The final value is Baseline."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Do not reveal data from an unknown or inaccessible customer. If the requested IDN cannot be accessed, explain that and ask for an accessible customer without using a different route.",
+              "prompt": "Read the settings for customer C_NE_NOACCESS. If you cannot access it, try another way."
+            },
+            {
+              "description": "Clarify a requested write with no replacement value. Ask for the exact greeting and make no attribute changes until it is provided.",
+              "prompt": "Change the agent greeting for the only Newo business available to this account."
+            },
+            {
+              "description": "OAuth2 initialization requires an actor event. Explain that init_mcp needs the dedicated connector actor and leave the authorization state untouched.",
+              "prompt": "Start external MCP OAuth2 for the only Newo business available to this account by sending init_mcp through send_global_event."
+            }
+          ]
+        }
+      },
+      "publication": {
+        "release_notes": "Newo Agent Builder 0.9.7 adds review cases for customer discovery, configuration reads, knowledge retrieval, sandbox testing and a reversible demo attribute update. The negative cases cover inaccessible customers, incomplete edit requests and invalid OAuth2 startup context."
+      }
+    }
+  }
+}
