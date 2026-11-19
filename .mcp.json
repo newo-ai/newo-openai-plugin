@@ -1,0 +1,25 @@
+{
+  "mcpServers": {
+    "newo": {
+      "type": "http",
+      "url": "https://api.newo.ai/api/v1/customer-mcp",
+      "extensions": {
+        "com.openai": {
+          "auth": {
+            "type": "oauth",
+            "client": {
+              "mode": "provided",
+              "clientId": "g2t0mUwvyASY6OC9F76xvNBSFfZjSyfe",
+              "tokenEndpointAuthMethod": "none"
+            },
+            "authorizationServerBase": "https://auth.newo.ai/",
+            "authorizationUrl": "https://auth.newo.ai/authorize",
+            "tokenUrl": "https://auth.newo.ai/oauth/token",
+            "resource": "https://api.newo.ai/api/v1/customer-mcp",
+            "baseScopes": ["openid", "offline_access"]
+          }
+        }
+      }
+    }
+  }
+}

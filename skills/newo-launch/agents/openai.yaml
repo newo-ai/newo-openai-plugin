@@ -1,0 +1,9 @@
+interface:
+  display_name: "Launch a Newo Agent"
+  short_description: "Configure SIP, transfers and phone channel launch"
+  default_prompt: "Use $newo-launch to prepare my agent for after-hours calls."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "newo"
+      description: "Newo Customer MCP"

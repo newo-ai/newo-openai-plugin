@@ -1,0 +1,1247 @@
+{
+  "schema_version": 1,
+  "basis": "standard_attribute_definitions; verify customer-specific availability and current constraints",
+  "not_a_complete_live_catalog": true,
+  "metadata_is_reference_only": true,
+  "string_serialization": "All customer/persona value arguments are strings, regardless of value_type; JSON is serialized once. Metadata and enum constraints come from live reads.",
+  "attributes": [
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-20. Appointment Setting - Check-in Notes [B]",
+      "purpose": "Define what the Agent should tell clients after they complete booking, such as arrival timing and preparation rules.",
+      "idn": "project_attributes_beauty_appointment_check_in_notes"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-21. Appointment Setting - Self-schedule Link (URL) - Guidance Instruction [B]",
+      "purpose": "Define the exact instructions the Agent should read while guiding a client through your online appointment form.",
+      "idn": "project_attributes_beauty_appointment_scenario_link_guidance_instruction"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-22. Appointment Setting - Questions & Information Before Scheduling an Appointment [B]",
+      "purpose": "Define the questions and pre-booking information the Agent should cover before helping a client schedule a beauty appointment, whether booking continues through a self-scheduling link or a manual scheduling process.",
+      "idn": "project_attributes_beauty_appointment_schedule_questions_and_info"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-23. Appointment Setting - Self-schedule Link (URL) [A] [IMPORTANT]",
+      "purpose": "Set the URL where clients can self-schedule beauty appointments online.",
+      "idn": "project_attributes_beauty_appointment_url"
+    },
+    {
+      "scope": "customer",
+      "value_type": "number",
+      "title": "5-09. ASR - Average Bill Amount For Catering Service Per Person Exceeding the Deposit",
+      "purpose": "Additional per-person charge used when guest count exceeds the deposit-covered guest limit.",
+      "idn": "project_attributes_catering_bill_per_person_exceeding_deposit"
+    },
+    {
+      "scope": "customer",
+      "value_type": "number",
+      "title": "5-10. ASR - Deposit Amount for Catering Service [A]",
+      "purpose": "Base catering charge (minimum deposit) covering the included number of guests.",
+      "idn": "project_attributes_catering_deposit"
+    },
+    {
+      "scope": "customer",
+      "value_type": "number",
+      "title": "5-11. ASR - The Number of People Covered by the Deposit Amount for Catering Service [A]",
+      "purpose": "Number of guests included in the base catering deposit before extra per-person charges apply.",
+      "idn": "project_attributes_catering_deposit_covered_number_of_people"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "1-16. Email - Catering [A]",
+      "purpose": "The main email inbox the Agent should use for catering requests and follow-ups.",
+      "idn": "project_attributes_catering_email"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "Link (URL) - Google Maps [A]",
+      "purpose": "Use this field for your catering business Google Maps listing URL so users can quickly get location and contact context.",
+      "idn": "project_attributes_catering_googlemaps_url"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "3-07. Catering Menu [A]",
+      "purpose": "This is your full catering menu content. It helps the Agent answer menu questions and provide more accurate recommendations during catering conversations.",
+      "idn": "project_attributes_catering_menu"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "Catering Menu Overview [C]",
+      "purpose": "Auto-generated summary of your catering menu used for faster conversational menu guidance.",
+      "idn": "project_attributes_catering_menu_overview"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "Catering Link (URL) - Menu [B]",
+      "purpose": "Public URL where customers can view your catering menu online.",
+      "idn": "project_attributes_catering_menu_url"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "1-17. Link (URL) - OpenTable [A]",
+      "purpose": "The OpenTable URL the Agent can share for catering-related booking discovery or handoff.",
+      "idn": "project_attributes_catering_opentable_url"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "3-08. Minimum Number of Days Before Ordering is Possible [A] [IMPORTANT]",
+      "purpose": "Set the minimum number of full days required before an event for the Agent to treat a catering order as standard lead time.",
+      "idn": "project_attributes_catering_order_minimum_days_in_advance"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-20. Catering - Questions [B]",
+      "purpose": "Define extra qualifying questions for catering conversations that you want available for custom prompts and process design.",
+      "idn": "project_attributes_catering_questions"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "3-09. Catering Service Details [A]",
+      "purpose": "Use this field to store operational catering rules that do not belong in the menu itself. It gives you one place to keep fulfillment details separate from dishes and pricing.",
+      "idn": "project_attributes_catering_service_details"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "3-10. Catering Signature Dishes [A]",
+      "purpose": "This field lists your signature or most-requested catering dishes. It gives the Agent a fast, high-confidence set of recommendations to highlight.",
+      "idn": "project_attributes_catering_signature_dishes"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "Link (URL) - Yelp [A]",
+      "purpose": "Use this field for your public Yelp listing URL so the Agent can reference an additional trusted external business profile.",
+      "idn": "project_attributes_catering_yelp_url"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-20. Cleaning Appointment Link (URL) [A] [IMPORTANT]",
+      "purpose": "Set the URL where users can book a cleaning appointment online.",
+      "idn": "project_attributes_cleaning_appointment_url"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-21. Cleaning Estimate Link (URL) [A] [IMPORTANT]",
+      "purpose": "Set the URL to your estimate/quote request form for cleaning services.",
+      "idn": "project_attributes_cleaning_estimate_url"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "3-07. Cleaning Frequency [A]",
+      "purpose": "This field defines which cleaning frequencies are available and which are not. The Agent uses it to present valid scheduling options during cleaning estimate conversations.",
+      "idn": "project_attributes_cleaning_frequency"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "3-03. Specials [A]",
+      "purpose": "Use this field for active promotions, discounts, and limited-time offers you want the Agent to mention.",
+      "idn": "project_attributes_current_specials"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-20. Appointment Setting - Check-in Notes [B]",
+      "purpose": "Define what the Agent should tell patients after booking, including check-in and document requirements.",
+      "idn": "project_attributes_dental_appointment_check_in_notes"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-21. Appointment Setting - Self-schedule Link (URL) - Guidance Instruction [B]",
+      "purpose": "Define the exact step-by-step instructions the Agent should use while helping a patient fill the online booking form.",
+      "idn": "project_attributes_dental_appointment_scenario_link_guidance_instruction"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-22. Appointment Setting - Questions & Information Before Scheduling an Appointment [B]",
+      "purpose": "Define the pre-booking questions and information the Agent should collect/share before proceeding with scheduling.",
+      "idn": "project_attributes_dental_appointment_schedule_questions_and_info"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-23. Appointment Setting - Self-schedule Link (URL) [A] [IMPORTANT]",
+      "purpose": "Set the URL where patients can self-schedule dental appointments online. If your clinic does not offer online self-scheduling, leave this empty.",
+      "idn": "project_attributes_dental_appointment_url"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "1-17. Insurances You Accept [A]",
+      "purpose": "List the insurance plans your clinic accepts so the Agent can answer patient insurance questions accurately.",
+      "idn": "project_attributes_dental_insurances"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "3-04. FAQ [A]",
+      "purpose": "Use this field for common customer questions and your preferred answers. It gives the Agent ready-to-use responses for recurring requests.",
+      "idn": "project_attributes_faq"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-20. Appointment Setting - Check-in Notes [B]",
+      "purpose": "Define what the Agent should tell people after they complete booking, such as arrival timing, parking details, or documents to bring.",
+      "idn": "project_attributes_general_appointment_check_in_notes"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-21. Appointment Setting - Self-schedule Link (URL) - Guidance Instruction [B]",
+      "purpose": "Define the exact instructions the Agent should use while helping someone complete your online appointment form.",
+      "idn": "project_attributes_general_appointment_scenario_link_guidance_instruction"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-22. Appointment Setting - Self-schedule Link (URL) [A] [IMPORTANT]",
+      "purpose": "Set the URL where people can self-schedule appointments online for your business. If you do not offer online self-scheduling, leave this empty.",
+      "idn": "project_attributes_general_appointment_url"
+    },
+    {
+      "scope": "customer",
+      "value_type": "enum",
+      "title": "4-23. General Modality [A] [IMPORTANT]",
+      "purpose": "Choose the primary process style for a General industry Agent. This tells the Agent whether the business mainly wants callers to book through a link, complete a purchase or signup through a link, or leave details for follow-up.",
+      "idn": "project_attributes_general_modality"
+    },
+    {
+      "scope": "customer",
+      "value_type": "number",
+      "title": "5-09. ASR - Average Bill Amount For Large Group Reservation Per Person Per Day [A]",
+      "purpose": "Expected daily revenue per guest for large-group hospitality bookings.",
+      "idn": "project_attributes_hospitality_bill_average_per_person_per_day_large_group_reservation"
+    },
+    {
+      "scope": "customer",
+      "value_type": "number",
+      "title": "5-10. ASR - Average Bill Amount For Regular Reservation Per Person Per Day [A]",
+      "purpose": "Expected daily revenue per guest for regular hospitality reservations.",
+      "idn": "project_attributes_hospitality_bill_average_per_person_per_day_regular_reservation"
+    },
+    {
+      "scope": "customer",
+      "value_type": "number",
+      "title": "5-11. ASR - Minimum Bill Amount For Large Group Reservation Per Day [A]",
+      "purpose": "Stores a hospitality configuration value intended to represent a per-day minimum for large-group opportunities.",
+      "idn": "project_attributes_hospitality_bill_minimum_per_day_large_group_reservation"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "1-16. Email - Large Group Reservation [A]",
+      "purpose": "The email inbox used for large-group reservation requests that need team review or manual follow-up.",
+      "idn": "project_attributes_hospitality_large_group_reservation_email"
+    },
+    {
+      "scope": "customer",
+      "value_type": "number",
+      "title": "4-20. Large Group Reservation - Minimum Party Size [A] [IMPORTANT]",
+      "purpose": "Set the adult-guest threshold that separates regular reservations from large-group reservations.",
+      "idn": "project_attributes_hospitality_large_group_reservation_minimum_party_size"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-21. Large Group Reservation - Questions [B]",
+      "purpose": "Define the additional questions the Agent should ask for large-group reservation requests.",
+      "idn": "project_attributes_hospitality_large_group_reservation_questions"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-22. Regular Reservation - Check-in Notes [B]",
+      "purpose": "Define the check-in instructions the Agent should provide after a guest confirms booking completion.",
+      "idn": "project_attributes_hospitality_regular_reservation_check_in_notes"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-23. Regular Reservation - Questions [B]",
+      "purpose": "Define the questions the Agent should ask in regular reservation flow before sending the booking link.",
+      "idn": "project_attributes_hospitality_regular_reservation_questions"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-24. Regular Reservation - Self-Reservation Link (URL) - Guidance Instruction [B]",
+      "purpose": "Define the spoken step-by-step instructions the Agent should use when guiding guests through the reservation link form.",
+      "idn": "project_attributes_hospitality_regular_reservation_via_link_guidance_instruction"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-25. Reservation Link (URL) [A] [IMPORTANT]",
+      "purpose": "Set the primary reservation link guests can use to book online. If your property does not offer online reservations, leave this empty.",
+      "idn": "project_attributes_hospitality_reservation_url"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "3-01. Products & Services [A]",
+      "purpose": "This is the main catalog of what your business offers. Agents use it to answer questions, suggest options, and decide whether a request can be handled.",
+      "idn": "project_attributes_products_and_services"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "3-02. Unavailable Products & Services [A]",
+      "purpose": "This field lists offerings your business does not provide. It helps Agents avoid promising services you cannot deliver.",
+      "idn": "project_attributes_products_and_services_not_offering"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "3-08. Products & Services - Area Served [A]",
+      "purpose": "Describe the general geographic area where your products or services are available.",
+      "idn": "project_attributes_products_and_services_served_area"
+    },
+    {
+      "scope": "customer",
+      "value_type": "json",
+      "title": "3-07. Products & Services - ZIP Codes Served [B] [IMPORTANT]",
+      "purpose": "JSON array of ZIP/postal patterns used to validate where service is available.",
+      "idn": "project_attributes_products_and_services_served_zip_codes"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "3-06-A. RAG - Knowledge Base - Text [A]",
+      "purpose": "Use this field to append text-based knowledge to the Agent without replacing existing memory. It is best for manuals, policies, scripts, and long-form reference content.",
+      "idn": "project_attributes_rag_knowledge_base_append_text"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "3-06-B. RAG - Knowledge Base - Text - Log [A]",
+      "purpose": "This is the running history of text batches you appended to memory. It acts as an audit trail and easy recovery source.",
+      "idn": "project_attributes_rag_knowledge_base_append_text_log"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "3-06-D. RAG - Knowledge Base - Websites [A]",
+      "purpose": "Use this field to append knowledge from websites by providing URLs plus extraction instructions. This is useful for live menus, policy pages, product pages, and other web-hosted content.",
+      "idn": "project_attributes_rag_knowledge_base_append_websites"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "3-06-E. RAG - Knowledge Base - Websites - Log [A]",
+      "purpose": "This is the history of website append requests you submitted (URLs and objectives). It helps you track what was requested and replay it when needed.",
+      "idn": "project_attributes_rag_knowledge_base_append_websites_log"
+    },
+    {
+      "scope": "customer",
+      "value_type": "number",
+      "title": "5-09. ASR - Average Bill Amount For Food Order [A]",
+      "purpose": "Estimated average revenue from a single food order. This is used to value order-type conversations in restaurant ASR reporting.",
+      "idn": "project_attributes_restaurant_bill_average_order"
+    },
+    {
+      "scope": "customer",
+      "value_type": "number",
+      "title": "5-10. ASR - Average Bill Amount For Catering Per Person [A]",
+      "purpose": "Expected per-guest catering spend benchmark used in restaurant ASR revenue configuration.",
+      "idn": "project_attributes_restaurant_bill_average_per_person_catering"
+    },
+    {
+      "scope": "customer",
+      "value_type": "number",
+      "title": "5-11. ASR - Average Bill Amount For Large Group Reservation Per Person [A]",
+      "purpose": "Expected spend per guest for large-party reservations.",
+      "idn": "project_attributes_restaurant_bill_average_per_person_large_group_reservation"
+    },
+    {
+      "scope": "customer",
+      "value_type": "number",
+      "title": "5-12. ASR - Average Bill Amount For Private Dining Per Person [A]",
+      "purpose": "Expected per-guest private-dining spend benchmark used in restaurant ASR revenue configuration.",
+      "idn": "project_attributes_restaurant_bill_average_per_person_private_dining"
+    },
+    {
+      "scope": "customer",
+      "value_type": "number",
+      "title": "5-13. ASR - Average Bill Amount For Regular Reservation Per Person [A]",
+      "purpose": "Expected spend per guest for standard table reservations.",
+      "idn": "project_attributes_restaurant_bill_average_per_person_regular_reservation"
+    },
+    {
+      "scope": "customer",
+      "value_type": "number",
+      "title": "5-14. ASR - Minimum Bill Amount For Catering [A]",
+      "purpose": "Configured minimum catering revenue threshold stored for restaurant ASR setup.",
+      "idn": "project_attributes_restaurant_bill_minimum_catering"
+    },
+    {
+      "scope": "customer",
+      "value_type": "number",
+      "title": "5-15. ASR - Minimum Bill Amount For Large Group Reservation [A]",
+      "purpose": "Minimum revenue floor for large-party reservation opportunities.",
+      "idn": "project_attributes_restaurant_bill_minimum_large_group_reservation"
+    },
+    {
+      "scope": "customer",
+      "value_type": "number",
+      "title": "5-16. ASR - Minimum Bill Amount For Private Dining [A]",
+      "purpose": "Configured minimum private-dining revenue threshold stored for restaurant ASR setup.",
+      "idn": "project_attributes_restaurant_bill_minimum_private_dining"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "1-16. Email - Catering [A]",
+      "purpose": "The main email inbox for catering inquiries and event-related follow-up requests.",
+      "idn": "project_attributes_restaurant_catering_email"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-20. Catering - Questions [B]",
+      "purpose": "Define the catering-specific questions the Agent should ask before routing or confirming next steps.",
+      "idn": "project_attributes_restaurant_catering_questions"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "1-17. Link (URL) - Google Booking Reservation [A] [IMPORTANT]",
+      "purpose": "The \"Reserve with Google\" URL used by the Agent to check table availability and place bookings.",
+      "idn": "project_attributes_restaurant_googlemaps_reservation_url"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "Link (URL) - Google Maps [A]",
+      "purpose": "Use this field for your restaurant's public Google Maps listing URL so customers can quickly access location and contact details.",
+      "idn": "project_attributes_restaurant_googlemaps_url"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "1-18. Email - Large Group Reservation [A]",
+      "purpose": "The email inbox for reservations that qualify as large-group requests and need manual team handling.",
+      "idn": "project_attributes_restaurant_large_group_reservation_email"
+    },
+    {
+      "scope": "customer",
+      "value_type": "number",
+      "title": "4-21. Large Group Reservation - Minimum Party Size [A] [IMPORTANT]",
+      "purpose": "Set the guest-count threshold where regular reservations switch to large-reservation handling.",
+      "idn": "project_attributes_restaurant_large_group_reservation_minimum_party_size"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-22. Large Group Reservation - Questions [B]",
+      "purpose": "Define the additional questions the Agent should ask when a request qualifies as a large reservation.",
+      "idn": "project_attributes_restaurant_large_group_reservation_questions"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "3-07. Restaurant Menu [A]",
+      "purpose": "This is your full restaurant menu content. It helps the Agent answer dish questions and provide more accurate menu recommendations.",
+      "idn": "project_attributes_restaurant_menu"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "Restaurant Menu Overview [C]",
+      "purpose": "Auto-generated summary of your restaurant menu used for faster menu-aware responses.",
+      "idn": "project_attributes_restaurant_menu_overview",
+      "access_note": "Derived value; read only in this plugin."
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "Link (URL) - Menu [B]",
+      "purpose": "Public URL where customers can view your restaurant menu online.",
+      "idn": "project_attributes_restaurant_menu_url"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "Link (URL) - OpenTable [A]",
+      "purpose": "Use this field for your restaurant's OpenTable page URL so the Agent can reference an external reservation path when needed.",
+      "idn": "project_attributes_restaurant_opentable_url"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "1-19. Email - Order [A]",
+      "purpose": "The email inbox used for food-order related requests that require manual follow-up.",
+      "idn": "project_attributes_restaurant_order_email"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-23. Link (URL) - Order [A] [IMPORTANT]",
+      "purpose": "Set the URL where customers can place pickup/delivery food orders online.",
+      "idn": "project_attributes_restaurant_order_url"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "1-20. Email - Private Dining [A]",
+      "purpose": "The email inbox for private-dining inquiries, proposals, and event-booking follow-up.",
+      "idn": "project_attributes_restaurant_private_dining_email"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-24. Private Dining - Questions [B]",
+      "purpose": "Define the private-dining questions the Agent should ask before routing or follow-up.",
+      "idn": "project_attributes_restaurant_private_dining_questions"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "3-08. Restaurant Regular Events - Schedule [A]",
+      "purpose": "Use this field for recurring event schedules (for example, live music nights, tasting events, or weekly specials programming).",
+      "idn": "project_attributes_restaurant_regular_events_schedule"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "Restaurant Regular Events - Schedule Link (URL) [B]",
+      "purpose": "Public URL where customers can view your recurring events schedule.",
+      "idn": "project_attributes_restaurant_regular_events_schedule_url"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-25. Regular Reservation - Self-Reservation Link (URL) - Guidance Instruction [B]",
+      "purpose": "Define the spoken guidance the Agent should use when helping guests complete a reservation through your booking link.",
+      "idn": "project_attributes_restaurant_regular_reservation_via_link_guidance_instruction"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "3-09. Restaurant Signature Dishes [A]",
+      "purpose": "This field lists the restaurant's signature or best-known dishes. It helps the Agent quickly surface your top recommendations.",
+      "idn": "project_attributes_restaurant_signature_dishes"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "Link (URL) - Yelp [A]",
+      "purpose": "Use this field for your public Yelp business page URL so the Agent can provide another external listing source to users.",
+      "idn": "project_attributes_restaurant_yelp_url"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-20. After Appointment Notes [B]",
+      "purpose": "Define the follow-up notes the Agent should share after the user confirms appointment booking.",
+      "idn": "project_attributes_sales_after_appointment_notes"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-22. Appointment Setting - Self-schedule Link (URL) [A] [IMPORTANT]",
+      "purpose": "Set the URL where users can self-schedule a sales appointment.",
+      "idn": "project_attributes_sales_appointment_url"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-21. Appointment Setting - Self-schedule Link (URL) - Guidance Instruction [B]",
+      "purpose": "Define the exact guidance the Agent should read while helping users complete self-scheduling through the sales appointment link.",
+      "idn": "project_attributes_sales_appointment_via_link_guidance_instruction"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-23. Pre-Sale Notes [B]",
+      "purpose": "Define the consultation questions/prompts the Agent should use during the pre-sale stage.",
+      "idn": "project_attributes_sales_pre_sale_questions"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-24. Qualification Criteria [B]",
+      "purpose": "Define the rules the Agent should use to decide whether a lead is qualified for the sales path.",
+      "idn": "project_attributes_sales_qualifying_criteria"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-25. Action On Qualification Failure [B]",
+      "purpose": "Define what the Agent should do when a lead does not pass qualification.",
+      "idn": "project_attributes_sales_qualifying_criteria_fallback_action"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-26. Qualification Questions [B]",
+      "purpose": "Define the question set the Agent should ask during lead qualification.",
+      "idn": "project_attributes_sales_qualifying_questions"
+    },
+    {
+      "scope": "customer",
+      "value_type": "bool",
+      "title": "Booking - Cancellation - Enabled [B]",
+      "purpose": "This setting turns direct booking cancellation on or off for the Agent. When enabled, the Agent can execute cancellation flows instead of only sending management links.",
+      "idn": "project_attributes_setting_booking_cancellation_enabled"
+    },
+    {
+      "scope": "customer",
+      "value_type": "enum",
+      "title": "Booking - Cancellation - Type [C]",
+      "purpose": "This setting controls which cancellation execution path the Agent uses for existing bookings. It defines whether the Agent sends a manage link or performs direct cancellation.",
+      "idn": "project_attributes_setting_booking_cancellation_type"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "Booking - Cancellation - URL [B]",
+      "purpose": "This is the endpoint template used for direct booking cancellation requests. The Agent replaces `{booking_id}` in this URL with the selected booking ID.",
+      "idn": "project_attributes_setting_booking_cancellation_url"
+    },
+    {
+      "scope": "customer",
+      "value_type": "bool",
+      "title": "Booking - Check Availability - Enabled [B]",
+      "purpose": "This setting enables or disables availability lookup before booking confirmation. When enabled, the Agent can actively check available slots for a requested date/time.",
+      "idn": "project_attributes_setting_booking_check_availability_enabled"
+    },
+    {
+      "scope": "customer",
+      "value_type": "number",
+      "title": "Booking - Max Days in Advance [C]",
+      "purpose": "This setting limits how far into the future the Agent can process booking-availability checks. It helps enforce your business booking window policy.",
+      "idn": "project_attributes_setting_booking_check_availability_max_days_in_advance"
+    },
+    {
+      "scope": "customer",
+      "value_type": "json",
+      "title": "Booking - Check Availability - Schema [C]",
+      "purpose": "This setting defines the payload schema used to build availability-check requests from conversation context.",
+      "idn": "project_attributes_setting_booking_check_availability_payload_schema_template"
+    },
+    {
+      "scope": "customer",
+      "value_type": "enum",
+      "title": "Booking - Check Availability - Processing Type [C]",
+      "purpose": "This setting controls how the Agent interprets the availability response after a check request is sent.",
+      "idn": "project_attributes_setting_booking_check_availability_processing_type"
+    },
+    {
+      "scope": "customer",
+      "value_type": "json",
+      "title": "Booking - Check Availability - Request Headers [C]",
+      "purpose": "This setting defines HTTP headers attached to availability-check interface requests. Provide headers as a JSON object where each key is a header name and each value is a header value.",
+      "idn": "project_attributes_setting_booking_check_availability_request_headers"
+    },
+    {
+      "scope": "customer",
+      "value_type": "enum",
+      "title": "Booking - Check Availability - Request HTTP Method [C]",
+      "purpose": "This setting defines which HTTP method the Agent uses when calling your availability endpoint.",
+      "idn": "project_attributes_setting_booking_check_availability_request_http_method"
+    },
+    {
+      "scope": "customer",
+      "value_type": "enum",
+      "title": "Booking - Check Availability - Type [C]",
+      "purpose": "This setting defines which integration path the Agent uses to check availability. Choose the type that matches where your availability data is sourced.",
+      "idn": "project_attributes_setting_booking_check_availability_type"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-26. Booking - Check Availability - Link (URL) [B] [IMPORTANT]",
+      "purpose": "This setting defines the endpoint or business URL used during availability checks. Use it when your availability flow depends on a specific external URL.",
+      "idn": "project_attributes_setting_booking_check_availability_url"
+    },
+    {
+      "scope": "customer",
+      "value_type": "json",
+      "title": "Booking - Check Availability - Validation Schema [C]",
+      "purpose": "This setting defines validation rules that the Agent applies before sending an availability-check request.",
+      "idn": "project_attributes_setting_booking_check_availability_validation_schema_template"
+    },
+    {
+      "scope": "customer",
+      "value_type": "number",
+      "title": "Booking - Check Availability - Window [C]",
+      "purpose": "This setting defines a configurable availability-check window value used by schema-driven booking flows.",
+      "idn": "project_attributes_setting_booking_check_availability_window"
+    },
+    {
+      "scope": "customer",
+      "value_type": "bool",
+      "title": "Booking - Check Availability - Working Hours Validation - Enabled [C]",
+      "purpose": "This setting controls whether the Agent validates requested slot time against business working hours before sending an availability request.",
+      "idn": "project_attributes_setting_booking_check_availability_working_hours_status"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "Booking - Email [C]",
+      "purpose": "This setting defines the base email used in booking payload generation. The Agent derives booking-specific email values from this base address.",
+      "idn": "project_attributes_setting_booking_email"
+    },
+    {
+      "scope": "customer",
+      "value_type": "bool",
+      "title": "Booking - Enabled [B]",
+      "purpose": "This setting turns booking capabilities on or off for the Agent. When enabled, the Agent can start booking actions and booking-management interactions.",
+      "idn": "project_attributes_setting_booking_enabled"
+    },
+    {
+      "scope": "customer",
+      "value_type": "enum",
+      "title": "Booking - Fallback Processing Type [C]",
+      "purpose": "This setting controls what the Agent does when a booking attempt fails.",
+      "idn": "project_attributes_setting_booking_fallback_processing_type"
+    },
+    {
+      "scope": "customer",
+      "value_type": "json",
+      "title": "Booking - Meta Fields Schema [C]",
+      "purpose": "This setting defines the schema for booking meta fields generated alongside booking payload data. For current flows, `smsBodyText` is the primary supported field.",
+      "idn": "project_attributes_setting_booking_meta_fields_schema_template"
+    },
+    {
+      "scope": "customer",
+      "value_type": "json",
+      "title": "Booking - Create Booking - Schema [C]",
+      "purpose": "This setting defines the JSON payload schema the Agent uses to build booking requests. It controls which booking fields are extracted from conversation context before submission.",
+      "idn": "project_attributes_setting_booking_payload_schema_template"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "Booking - Phrase Template on Submitting [B]",
+      "purpose": "This setting defines the message the Agent can send right after a booking request is submitted and before final confirmation is received.",
+      "idn": "project_attributes_setting_booking_phrase_template_on_booking_submitting"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "Booking - Phrase Template on Successful Booking [B]",
+      "purpose": "This setting defines the optional confirmation message the Agent sends after a successful booking response.",
+      "idn": "project_attributes_setting_booking_phrase_template_on_booking_success"
+    },
+    {
+      "scope": "customer",
+      "value_type": "json",
+      "title": "Booking - Request Headers [C]",
+      "purpose": "This setting defines HTTP headers attached to booking interface requests. Provide headers as a JSON object where each key is a header name and each value is a header value.",
+      "idn": "project_attributes_setting_booking_request_headers"
+    },
+    {
+      "scope": "customer",
+      "value_type": "bool",
+      "title": "Booking - Email Notification On Successful Booking [B]",
+      "purpose": "This setting controls whether the Agent sends an internal email notification after a booking is successfully confirmed.",
+      "idn": "project_attributes_setting_booking_success_notification_on_email_enabled"
+    },
+    {
+      "scope": "customer",
+      "value_type": "bool",
+      "title": "Booking - SMS Notification On Successful Booking [B]",
+      "purpose": "This setting controls whether the Agent sends booking-success SMS confirmation to the user.",
+      "idn": "project_attributes_setting_booking_success_notification_on_sms_enabled"
+    },
+    {
+      "scope": "customer",
+      "value_type": "enum",
+      "title": "Booking - Type [C]",
+      "purpose": "This setting defines which integration path the Agent uses to submit booking requests and process booking results.",
+      "idn": "project_attributes_setting_booking_type"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "Booking - Link (URL) [B]",
+      "purpose": "This setting defines the endpoint URL used to submit booking requests in HTTP-based booking flows.",
+      "idn": "project_attributes_setting_booking_url"
+    },
+    {
+      "scope": "customer",
+      "value_type": "enum",
+      "title": "4-04. Appointment - Calendar Event Integration [A] [IMPORTANT]",
+      "purpose": "Choose how the Agent should handle calendar event creation during appointment flows.",
+      "idn": "project_attributes_setting_calendar_event_integration"
+    },
+    {
+      "idn": "project_attributes_setting_common_phone_numbers",
+      "scope": "customer",
+      "value_type": "json",
+      "title": "1-12. Common (Shared) Phone Numbers [A]",
+      "purpose": "Voice provider selection or shared-number handling; verify the current allowed values and channel-specific behavior before changing."
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-06. Email to User During Session - Allowed Content [B] [IMPORTANT]",
+      "purpose": "Define the exact email content templates or rules the Agent is allowed to send.",
+      "idn": "project_attributes_setting_email_send_information_allowed_content"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-07. Email to User During Session - Allowed Content Items [B] [IMPORTANT]",
+      "purpose": "Define a short, high-level whitelist of what the Agent may include in emails.",
+      "idn": "project_attributes_setting_email_send_information_allowed_content_items"
+    },
+    {
+      "scope": "customer",
+      "value_type": "bool",
+      "title": "4-05. Email to User During Session - Enabled [B] [IMPORTANT]",
+      "purpose": "Turn this on if the Agent is allowed to send emails to users during a live conversation.",
+      "idn": "project_attributes_setting_email_send_information_enabled"
+    },
+    {
+      "idn": "project_attributes_setting_hipaa_mode_enabled",
+      "scope": "customer",
+      "value_type": "bool",
+      "purpose": "Controls supported sensitive-data handling; not a compliance certification and does not override access restrictions."
+    },
+    {
+      "scope": "customer",
+      "value_type": "bool",
+      "title": "Appointment - Google Calendar Meeting - Working Hours Validation - Enabled [B]",
+      "purpose": "This setting controls whether the Agent validates requested Google meeting times against business working hours before creating a meeting.",
+      "idn": "project_attributes_setting_meeting_check_availability_working_hours_status"
+    },
+    {
+      "scope": "customer",
+      "value_type": "number",
+      "title": "Appointment - Google Calendar Meeting - Duration [B]",
+      "purpose": "This setting defines the meeting duration (in minutes) for Agent-created Google calendar events.",
+      "idn": "project_attributes_setting_meeting_duration"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "Appointment - Google Calendar Meeting - Setup Phrase [B]",
+      "purpose": "This setting defines an additional phrase pattern the Agent can use to confirm it is about to create a meeting.",
+      "idn": "project_attributes_setting_meeting_setup_phrase"
+    },
+    {
+      "scope": "customer",
+      "value_type": "bool",
+      "title": "Conversation - Session Ended - Full Processing Enabled [C] [IMPORTANT]",
+      "purpose": "Controls whether session end runs full analysis, reporting, and finalization.",
+      "idn": "project_attributes_setting_session_ended_full_processing_enabled"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "5-05. Reports - Session Ended Report - Content [B] [IMPORTANT]",
+      "purpose": "This setting defines the report templates used after a conversation ends. It controls report types, fields to extract, and how email subjects/SMS text are generated. Your criteria template decides whether a report goes by email, SMS, or both; this setting defines what each of those reports says.",
+      "idn": "project_attributes_setting_session_ended_report_content"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "5-06. Reports - Session Ended Report - Criteria [B] [IMPORTANT]",
+      "purpose": "This setting defines the routing rules for session-ended reports. It decides which report types send SMS/email, when they send, and who receives them.",
+      "idn": "project_attributes_setting_session_ended_report_criteria_template"
+    },
+    {
+      "scope": "customer",
+      "value_type": "bool",
+      "title": "5-04. Reports - Session Ended Report - Enabled [B] [IMPORTANT]",
+      "purpose": "This is the master switch for end-of-session manager reports. When enabled, the system can send report emails and/or SMS based on your report criteria and templates.",
+      "idn": "project_attributes_setting_session_ended_report_enabled"
+    },
+    {
+      "scope": "customer",
+      "value_type": "bool",
+      "title": "5-07. Reports - Session Ended Report - Transcript [B]",
+      "purpose": "This setting controls whether full conversation text is attached to session-ended report emails.",
+      "idn": "project_attributes_setting_session_ended_report_include_transcript"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-18. Promotional SMS Content [B]",
+      "purpose": "Write the SMS text that should be sent automatically after the conversation ends.",
+      "idn": "project_attributes_setting_session_ended_sms_content"
+    },
+    {
+      "scope": "customer",
+      "value_type": "bool",
+      "title": "4-17. Promotional SMS - Enabled [B]",
+      "purpose": "Controls whether the system should send a post-conversation SMS after a session ends.",
+      "idn": "project_attributes_setting_session_ended_sms_enabled"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "Reports - Webhook - Authentication Header [C]",
+      "purpose": "Authorization value used for session-ended webhook requests. This is sent as the `Authorization` HTTP header when your webhook endpoint is called.",
+      "idn": "project_attributes_setting_session_ended_webhook_auth_header"
+    },
+    {
+      "scope": "customer",
+      "value_type": "json",
+      "title": "Reports - Webhook - Schema [C]",
+      "purpose": "Defines the JSON schema used to build the payload for your session-ended webhook. The Agent uses this schema to extract structured values from the conversation.",
+      "idn": "project_attributes_setting_session_ended_webhook_schema"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "Reports - Webhook - Link (URL) [C]",
+      "purpose": "This setting defines the endpoint URL that receives a webhook when a session ends.",
+      "idn": "project_attributes_setting_session_ended_webhook_url"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-09. SMS to User During Session - Allowed Content [B] [IMPORTANT]",
+      "purpose": "Define the exact SMS content the Agent is allowed to send during a session.",
+      "idn": "project_attributes_setting_sms_send_information_allowed_content"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-10. SMS to User During Session - Allowed Content Items [B] [IMPORTANT]",
+      "purpose": "Define a concise list of SMS content categories the Agent is allowed to send.",
+      "idn": "project_attributes_setting_sms_send_information_allowed_content_items"
+    },
+    {
+      "scope": "customer",
+      "value_type": "bool",
+      "title": "4-08. SMS to User During Session - Enabled [B] [IMPORTANT]",
+      "purpose": "Turn this on if the Agent is allowed to send SMS/text messages during the conversation.",
+      "idn": "project_attributes_setting_sms_send_information_enabled"
+    },
+    {
+      "scope": "customer",
+      "value_type": "bool",
+      "title": "Testing - Test Mode [C] [IMPORTANT]",
+      "purpose": "This setting switches booking/meeting scheduling flows into test behavior to reduce external side effects.",
+      "idn": "project_attributes_setting_test_mode"
+    },
+    {
+      "scope": "customer",
+      "value_type": "json",
+      "title": "Testing - Test Mode Phone Numbers [C] [IMPORTANT]",
+      "purpose": "Account-scoped JSON list of phone-call numbers that should always run in test mode, even when the main test-mode switch is turned off.",
+      "idn": "project_attributes_setting_test_mode_phone_numbers"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-15. Transfer Call to Manager - Call Criteria [B] [IMPORTANT]",
+      "purpose": "Define the situations where the Agent should suggest connecting the user to a human co-worker.",
+      "idn": "project_attributes_setting_transfer_call_criteria"
+    },
+    {
+      "scope": "customer",
+      "value_type": "enum",
+      "title": "Transfer Call to Manager - Phone Number Format [C]",
+      "purpose": "Controls the format of phone numbers listed in Transfer Call Phone Numbers. It is used when the Agent chooses a number from that list.",
+      "idn": "project_attributes_setting_transfer_call_destination_format"
+    },
+    {
+      "scope": "customer",
+      "value_type": "bool",
+      "title": "4-12. Transfer Call to Manager - Enabled [B] [IMPORTANT]",
+      "purpose": "Controls whether the Agent is allowed to transfer live phone calls to a human co-worker.",
+      "idn": "project_attributes_setting_transfer_call_enabled"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-16. Transfer Call to Manager - Advanced Phone Number Selection & Rules [B] [IMPORTANT]",
+      "purpose": "Use this field when you need different transfer numbers for different call scenarios.",
+      "idn": "project_attributes_setting_transfer_call_phone_numbers"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "2-10. Bypass Phone Number [A]",
+      "purpose": "Phone number used as emergency/bypass forwarding destination for voice integrations.",
+      "idn": "project_attributes_setting_voice_integration_service_bypass_phone_number"
+    },
+    {
+      "scope": "customer",
+      "value_type": "enum",
+      "title": "Voice - Integration Service - Voice Mode [C] [IMPORTANT]",
+      "purpose": "Defines the operating mode for the platform-native voice integration.",
+      "idn": "project_attributes_setting_voice_integration_service_voice_mode"
+    },
+    {
+      "scope": "customer",
+      "value_type": "enum",
+      "title": "Voice - Integration Service - Voice To Voice Provider [C] [IMPORTANT]",
+      "purpose": "Selects the active provider for `voice-to-voice` operation in the platform-native voice path.",
+      "idn": "project_attributes_setting_voice_integration_service_voice_to_voice_provider"
+    },
+    {
+      "idn": "project_attributes_setting_voice_integration_service_voice_to_voice_provider_genai_voice",
+      "scope": "customer",
+      "value_type": "enum",
+      "title": "2-05-A. Voice - Integration Service - Voice To Voice Provider - GenAI - Voice [A]",
+      "purpose": "Voice provider selection or shared-number handling; verify the current allowed values and channel-specific behavior before changing."
+    },
+    {
+      "idn": "project_attributes_setting_voice_integration_service_voice_to_voice_provider_grok_voice",
+      "scope": "customer",
+      "value_type": "enum",
+      "title": "2-05-C. Voice - Integration Service - Voice To Voice Provider - Grok - Voice [A]",
+      "purpose": "Voice provider selection or shared-number handling; verify the current allowed values and channel-specific behavior before changing."
+    },
+    {
+      "idn": "project_attributes_setting_voice_integration_service_voice_to_voice_provider_openai_voice",
+      "scope": "customer",
+      "value_type": "enum",
+      "title": "2-05-B. Voice - Integration Service - Voice To Voice Provider - OpenAI - Voice [A]",
+      "purpose": "Voice provider selection or shared-number handling; verify the current allowed values and channel-specific behavior before changing."
+    },
+    {
+      "scope": "customer",
+      "value_type": "json",
+      "title": "Conversation - Tools [C]",
+      "purpose": "This attribute specifies the `tools` that are available for the Agent to use during the conversation. You can either override existing tools or add new ones.",
+      "idn": "project_attributes_settings_platform_tools"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "3-05. Additional Details and Rules [B]",
+      "purpose": "Use this field for operational rules customers should know before booking or visiting (policies, access rules, timing, and constraints).",
+      "idn": "project_attributes_terms_and_conditions"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "1-02. Business Address [A]",
+      "purpose": "The primary physical address the Agent should reference when users ask where your business is located.",
+      "idn": "project_business_address"
+    },
+    {
+      "scope": "customer",
+      "value_type": "enum",
+      "title": "1-15. Industry (DON'T CHANGE) [A] [IMPORTANT]",
+      "purpose": "The core business domain used to configure this Agent during setup. It controls which industry-specific templates, defaults, and logic paths are applied.",
+      "idn": "project_business_industry",
+      "access_note": "Read only in this plugin."
+    },
+    {
+      "scope": "customer",
+      "value_type": "json",
+      "title": "1-17. Language - Restricted Languages [B]",
+      "purpose": "Specify languages the Agent must avoid using in replies or automatic language switching. The same list also prevents those languages from being selected as the runtime conversation language or the user's stored preferred language.",
+      "idn": "project_business_language_restricted_list"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "Business Locations [C] [IMPORTANT]",
+      "purpose": "Use this field to list all business locations when you operate in more than one place. It helps the Agent identify which location the user is asking about.",
+      "idn": "project_business_locations"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-11. Email to Manager - Email Address [A] [IMPORTANT]",
+      "purpose": "Set the main manager/team email where the Agent should send escalations, leads, and operational updates.",
+      "idn": "project_business_manager_email"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "1-01-A. Business Name [A]",
+      "purpose": "The short, customer-recognized business name the Agent uses in greetings, SMS/email headers, and signatures.",
+      "idn": "project_business_name"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "1-01-B. Business Phonetic Name [B]",
+      "purpose": "The pronunciation form of your business name used during voice conversations. Set this when your normal business name spelling is hard for voice models to pronounce correctly.",
+      "idn": "project_business_name_phonetic"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-13. Transfer Call to Manager - Phone # Non-Working Hours [A] [IMPORTANT]",
+      "purpose": "Set the escalation phone number the Agent should use outside working hours when a transfer is needed.",
+      "idn": "project_business_non_working_hour_escalation_phone"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "1-03. Business Phone (Public Phone) [A]",
+      "purpose": "The official customer-facing phone number the Agent should share when users ask how to reach your business.",
+      "idn": "project_business_public_phone"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "1-04. Business Description [A]",
+      "purpose": "A short business overview the Agent uses to explain what you do and what makes you different. This should read like a clear customer-facing summary, not internal notes.",
+      "idn": "project_business_story"
+    },
+    {
+      "scope": "customer",
+      "value_type": "enum",
+      "title": "1-07. Business Time Zone [A] [IMPORTANT]",
+      "purpose": "The primary time zone for this business location. The Agent uses this as the reference for time-based decisions and time stamps.",
+      "idn": "project_business_time_zone"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "Business Type [A]",
+      "purpose": "Define your business category in a short phrase so the Agent has clear domain context from the start.",
+      "idn": "project_business_type"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "1-05. Business Website Link (URL) [A]",
+      "purpose": "The official website URL the Agent can share when users ask for more information.",
+      "idn": "project_business_website_url"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "4-14. Transfer Call to Manager - Phone # Working Hours [A] [IMPORTANT]",
+      "purpose": "Set the primary escalation phone number for transfer attempts during working hours.",
+      "idn": "project_business_working_hour_escalation_phone"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "1-06. Working Hours [A] [IMPORTANT]",
+      "purpose": "The operating schedule for this business location used for scheduling, availability checks, and working-hours call behavior.",
+      "idn": "project_business_working_hours"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "Chat - Greeting Phrase [A]",
+      "purpose": "Primary first message for chat channels where the Agent is expected to greet first.",
+      "idn": "project_representative_agent_chat_greeting_phrase"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "2-04-B. Agent Tone of Voice for Chat Channels [A]",
+      "purpose": "Defines the Agent's chat tone and communication personality.",
+      "idn": "project_representative_agent_chat_speaking_style"
+    },
+    {
+      "scope": "customer",
+      "value_type": "bool",
+      "title": "2-03-C. Agent Multilingual [A]",
+      "purpose": "Determines whether the Agent receives broad permission to converse in any language that is not restricted. Common setup enables this behavior by default so the Agent can serve multilingual users without a configured secondary-language allowlist.",
+      "idn": "project_representative_agent_multilingual"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "2-01. Agent Name [A]",
+      "purpose": "The public name your Agent uses when introducing itself in conversations and message signatures.",
+      "idn": "project_representative_agent_name"
+    },
+    {
+      "scope": "customer",
+      "value_type": "enum",
+      "title": "2-03-A. Agent Primary Language [A]",
+      "purpose": "The Agent's preferred default language for conversation replies. It supplies the starting language when the conversation has not established another allowed language.",
+      "idn": "project_representative_agent_primary_language"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "2-12. Explicit Constraint - Providing Prices [A]",
+      "purpose": "Explicit instruction block that controls how the Agent communicates pricing.",
+      "idn": "project_representative_agent_providing_prices_explicit_constraint"
+    },
+    {
+      "scope": "customer",
+      "value_type": "json",
+      "title": "2-03-B. Agent Secondary Languages [A]",
+      "purpose": "Languages the Agent is explicitly allowed to use in addition to Agent Primary Language. Use this when the Agent should support a controlled set of languages instead of full multilingual behavior.",
+      "idn": "project_representative_agent_secondary_languages"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "2-02. Agent Title [A]",
+      "purpose": "The Agent's role label (for example, AI Host or AI Sales Rep) shown in messages and signatures.",
+      "idn": "project_representative_agent_title"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "2-07-A. Voice - Disclaimer Phrase [A]",
+      "purpose": "Short phrase spoken before the main voice greeting (for example, compliance or recording notice).",
+      "idn": "project_representative_agent_voice_disclaimer_phrase"
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "2-07-B. Voice - Greeting Phrase - Inbound [A] [IMPORTANT]",
+      "purpose": "Primary voice greeting for inbound calls.",
+      "idn": "project_representative_agent_voice_greeting_phrase"
+    },
+    {
+      "scope": "customer",
+      "value_type": "number",
+      "title": "2-06. Agent Phone Number (AI Phone) (DON'T CHANGE) [A]",
+      "purpose": "System-managed AI phone number assigned to this Agent for voice channels.",
+      "idn": "project_representative_agent_voice_phone_number",
+      "access_note": "Read only in this plugin."
+    },
+    {
+      "scope": "customer",
+      "value_type": "string",
+      "title": "2-04-A. Agent Tone of Voice / Speaking Style for Voice Channels [A]",
+      "purpose": "Defines voice-channel speaking behavior (pace, tone, and optional accent guidance).",
+      "idn": "project_representative_agent_voice_speaking_style"
+    },
+    {
+      "idn": "session_test_mode",
+      "scope": "persona",
+      "value_type": "bool",
+      "purpose": "Canonical test-mode state of this session; read by exact persona_id. Preparation writes require a documented test-start contract."
+    },
+    {
+      "scope": "project",
+      "value_type": "json",
+      "title": "Project - Testing - Test Mode Phone Numbers Static [C] [IMPORTANT]",
+      "purpose": "Project-scoped JSON list of phone-call numbers that should always run in test mode for this project, even when the main test-mode switch is turned off.",
+      "idn": "project_attributes_setting_test_mode_phone_numbers_static"
+    }
+  ],
+  "mcp_scope_support": {
+    "customer": "search/get/set/create/delete_customer_attribute",
+    "persona": "search/get/set/create/delete_persona_attribute with persona_id; refused for signed BAA",
+    "project": "Defined in project.yaml or its referenced file; read/write_project_version_files on an accessible version, targeted edits through an explicit draft/fork workflow. No separate scope tool."
+  }
+}

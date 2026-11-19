@@ -1,0 +1,951 @@
+{
+  "schema_version": 1,
+  "scope": "user_operations_with_targeted_project_attribute_configuration_and_external_mcp_oauth_project",
+  "instruction_coverage": "aligned_with_owner_clarifications_confluence_a14ef37_and_runtime_metadata",
+  "not_live_certification": true,
+  "dependency_legend": {
+    "catalog": "Use known tools after checking current schemas and access.",
+    "attributes": "Customer/persona attribute tools are in the supplied export; verify current availability, metadata and behavior.",
+    "contract": "Needs exact event, attribute, integration or apply contract; do not infer missing semantics.",
+    "external_step": "Requires user/operator action outside Customer MCP; plugin prepares and verifies only its available portion.",
+    "preparation": "Prepare text for the user only; no sending, ticket tracking or execution of the requested external operation.",
+    "project_files": "Requires an accessible active version, complete file content, explicit targeted project-attribute change, draft/fork and version application."
+  },
+  "cases": [
+    {
+      "id": "access",
+      "title": "OAuth connection and access recovery",
+      "skill": "skills/newo-connect/SKILL.md",
+      "reference": "references/connection.md",
+      "tools": [
+        "get_customers"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "catalog",
+      "live_validation": "not_run",
+      "coverage_notes": "Global metadata was read; selected-customer UAT is not_run and must not inherit that success."
+    },
+    {
+      "id": "identity",
+      "title": "Select an existing agent and customer",
+      "skill": "skills/newo-connect/SKILL.md",
+      "reference": "references/connection.md",
+      "tools": [
+        "get_customers"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "catalog",
+      "live_validation": "not_run",
+      "coverage_notes": "Multiple chat_urls are normal when a customer has multiple newo_chat connectors. Do not fail customer identity selection solely because several chat links are returned; actual chat operation is a separate channel test."
+    },
+    {
+      "id": "create",
+      "title": "Create a customer and track provisioning",
+      "skill": "skills/newo-agent-builder/SKILL.md",
+      "reference": "references/creation.md",
+      "tools": [
+        "get_customers",
+        "create_customer",
+        "get_run"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "catalog",
+      "live_validation": "not_run",
+      "coverage_notes": "Record only the most recent customer IDN before creation. If the result is uncertain, compare it with a fresh first-page result and verify the candidate before continuing."
+    },
+    {
+      "id": "setup",
+      "title": "Finish business setup",
+      "skill": "skills/newo-configure/SKILL.md",
+      "reference": "references/setup.md",
+      "tools": [
+        "search_customer_attributes",
+        "get_customer_attribute",
+        "set_customer_attribute_value"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "attributes",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "hours",
+      "title": "Hours, breaks, holidays and time zone",
+      "skill": "skills/newo-configure/SKILL.md",
+      "reference": "references/setup.md",
+      "tools": [
+        "search_customer_attributes",
+        "get_customer_attribute",
+        "set_customer_attribute_value"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "attributes",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "languages",
+      "title": "Languages, greetings, pronunciation and style",
+      "skill": "skills/newo-configure/SKILL.md",
+      "reference": "references/setup.md",
+      "tools": [
+        "search_customer_attributes",
+        "get_customer_attribute",
+        "set_customer_attribute_value"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "attributes",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "prices",
+      "title": "Catalog, pricing, restrictions, FAQs and offers",
+      "skill": "skills/newo-configure/SKILL.md",
+      "reference": "references/setup.md",
+      "tools": [
+        "search_customer_attributes",
+        "get_customer_attribute",
+        "set_customer_attribute_value"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "attributes",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "reports",
+      "title": "Staff report content, routing and delivery",
+      "skill": "skills/newo-configure/SKILL.md",
+      "reference": "references/setup.md",
+      "tools": [
+        "search_customer_attributes",
+        "get_customer_attribute",
+        "set_customer_attribute_value",
+        "search_logs"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "attributes",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "health",
+      "title": "Health checks for contradictions, routing loops and gaps",
+      "skill": "skills/newo-configure/SKILL.md",
+      "reference": "references/health.md",
+      "tools": [
+        "search_customer_attributes",
+        "get_customer_attribute",
+        "get_connectors",
+        "list_projects"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "attributes",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "scenarios",
+      "title": "Scenarios using customer attributes and AKB within Workflow Builder limits",
+      "skill": "skills/newo-configure/SKILL.md",
+      "reference": "references/setup.md",
+      "tools": [
+        "search_customer_attributes",
+        "get_customer_attribute",
+        "set_customer_attribute_value",
+        "search_akb_topics",
+        "create_akb_topic",
+        "delete_akb_topic"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "contract",
+      "live_validation": "not_run",
+      "coverage_notes": "No direct Workflow Builder/canvas interface; use real known representations, not an invented canvas JSON."
+    },
+    {
+      "id": "restaurant",
+      "title": "Restaurant menus, reservations, orders, groups and events",
+      "skill": "skills/newo-configure/SKILL.md",
+      "reference": "references/industry-guide.md",
+      "tools": [
+        "search_customer_attributes",
+        "get_customer_attribute",
+        "set_customer_attribute_value"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "attributes",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "dental",
+      "title": "Dental insurance, intake, appointments and urgent cases",
+      "skill": "skills/newo-configure/SKILL.md",
+      "reference": "references/industry-guide.md",
+      "tools": [
+        "search_customer_attributes",
+        "get_customer_attribute",
+        "set_customer_attribute_value"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "attributes",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "beauty",
+      "title": "Beauty and wellness services, specialists and bookings",
+      "skill": "skills/newo-configure/SKILL.md",
+      "reference": "references/industry-guide.md",
+      "tools": [
+        "search_customer_attributes",
+        "get_customer_attribute",
+        "set_customer_attribute_value"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "attributes",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "cleaning",
+      "title": "Cleaning frequency, service area, estimates and orders",
+      "skill": "skills/newo-configure/SKILL.md",
+      "reference": "references/industry-guide.md",
+      "tools": [
+        "search_customer_attributes",
+        "get_customer_attribute",
+        "set_customer_attribute_value"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "attributes",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "home_service",
+      "title": "Field service addresses, areas and urgency",
+      "skill": "skills/newo-configure/SKILL.md",
+      "reference": "references/industry-guide.md",
+      "tools": [
+        "search_customer_attributes",
+        "get_customer_attribute",
+        "set_customer_attribute_value"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "attributes",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "catering",
+      "title": "Catering request details and staff handoff",
+      "skill": "skills/newo-configure/SKILL.md",
+      "reference": "references/industry-guide.md",
+      "tools": [
+        "search_customer_attributes",
+        "get_customer_attribute",
+        "set_customer_attribute_value"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "attributes",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "hospitality",
+      "title": "Hotel reservations, group bookings and check-in",
+      "skill": "skills/newo-configure/SKILL.md",
+      "reference": "references/industry-guide.md",
+      "tools": [
+        "search_customer_attributes",
+        "get_customer_attribute",
+        "set_customer_attribute_value"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "attributes",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "sales",
+      "title": "Sales qualification, fallback and appointments",
+      "skill": "skills/newo-configure/SKILL.md",
+      "reference": "references/industry-guide.md",
+      "tools": [
+        "search_customer_attributes",
+        "get_customer_attribute",
+        "set_customer_attribute_value"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "attributes",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "general",
+      "title": "General business booking, transactions from links and follow-up",
+      "skill": "skills/newo-configure/SKILL.md",
+      "reference": "references/industry-guide.md",
+      "tools": [
+        "search_customer_attributes",
+        "get_customer_attribute",
+        "set_customer_attribute_value"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "attributes",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "append_text",
+      "title": "Append long-form materials through attributes",
+      "skill": "skills/newo-knowledge/SKILL.md",
+      "reference": "references/knowledge.md",
+      "tools": [
+        "search_customer_attributes",
+        "get_customer_attribute",
+        "set_customer_attribute_value"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "attributes",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "append_sites",
+      "title": "Import web pages on the server and verify logs",
+      "skill": "skills/newo-knowledge/SKILL.md",
+      "reference": "references/knowledge.md",
+      "tools": [
+        "search_customer_attributes",
+        "get_customer_attribute",
+        "set_customer_attribute_value"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "attributes",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "knowledge_edit",
+      "title": "Replace a specific AKB topic through creation and deletion",
+      "skill": "skills/newo-knowledge/SKILL.md",
+      "reference": "references/knowledge.md",
+      "tools": [
+        "search_akb_topics",
+        "fuzzy_search_akb_topics",
+        "create_akb_topic",
+        "delete_akb_topic"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "catalog",
+      "live_validation": "not_run",
+      "coverage_notes": "No in-place update; create/delete order depends on loss/duplication tradeoffs and authorization. Each step verified separately."
+    },
+    {
+      "id": "akb_availability",
+      "title": "Retrieve a new AKB topic from the next conversation without publication",
+      "skill": "skills/newo-knowledge/SKILL.md",
+      "reference": "references/knowledge.md",
+      "tools": [
+        "create_akb_topic",
+        "search_akb_topics",
+        "send_message",
+        "search_conversations"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "catalog",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "knowledge_answers",
+      "title": "Diagnose an incorrect answer through conversations, attributes and logs",
+      "skill": "skills/newo-knowledge/SKILL.md",
+      "reference": "references/knowledge.md",
+      "tools": [
+        "list_sessions",
+        "get_session",
+        "search_conversations",
+        "search_logs",
+        "get_customer_attribute",
+        "set_customer_attribute_value",
+        "send_message",
+        "search_akb_topics",
+        "fuzzy_search_akb_topics"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "contract",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "source_modes",
+      "title": "Inspect the knowledge source and diagnose connectivity",
+      "skill": "skills/newo-knowledge/SKILL.md",
+      "reference": "references/knowledge.md",
+      "tools": [
+        "search_customer_attributes",
+        "get_customer_attribute",
+        "get_connectors",
+        "search_logs",
+        "list_projects",
+        "read_project_version_files",
+        "send_message"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "attributes",
+      "live_validation": "not_run",
+      "coverage_notes": "If the customer attribute is absent or unclear, verify the knowledge source against accessible project files, search logs, and behavior in a new session."
+    },
+    {
+      "id": "voice",
+      "title": "Voice, model, STT, phone and browser channels",
+      "skill": "skills/newo-integrations/SKILL.md",
+      "reference": "references/integrations.md",
+      "tools": [
+        "get_connectors",
+        "update_connector",
+        "get_customer_attribute",
+        "set_customer_attribute_value",
+        "get_integrations"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "contract",
+      "live_validation": "not_run",
+      "coverage_notes": "Use the customer-specific connector IDN. A WebRTC retest verified updating two settings in one partial request, preservation of the other settings, and partial rollback."
+    },
+    {
+      "id": "connector",
+      "title": "Create, update, start or stop a connector",
+      "skill": "skills/newo-integrations/SKILL.md",
+      "reference": "references/integrations.md",
+      "tools": [
+        "get_connectors",
+        "create_connector",
+        "update_connector",
+        "run_connector"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "catalog",
+      "live_validation": "not_run",
+      "coverage_notes": "Use get_integrations to validate setting keys and get_connectors for baseline and readback. Send only changed keys. Preserve omitted values and roll back only affected keys. The test covered one field on the api integration and two WebRTC fields."
+    },
+    {
+      "id": "calendar",
+      "title": "Google Calendar and Cal.com through existing handlers",
+      "skill": "skills/newo-integrations/SKILL.md",
+      "reference": "references/business-integrations.md",
+      "tools": [
+        "search_customer_attributes",
+        "get_connectors",
+        "update_connector",
+        "get_customer_attribute",
+        "set_customer_attribute_value"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "attributes",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "booking",
+      "title": "Availability, booking, cancellation, rescheduling and deduplication",
+      "skill": "skills/newo-integrations/SKILL.md",
+      "reference": "references/business-integrations.md",
+      "tools": [
+        "get_customer_attribute",
+        "set_customer_attribute_value",
+        "send_message",
+        "search_logs"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "contract",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "crm",
+      "title": "CRM and session-ended webhook",
+      "skill": "skills/newo-integrations/SKILL.md",
+      "reference": "references/business-integrations.md",
+      "tools": [
+        "search_customer_attributes",
+        "get_customer_attribute",
+        "set_customer_attribute_value",
+        "search_logs"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "attributes",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "messages",
+      "title": "SMS and email settings and delivery evidence",
+      "skill": "skills/newo-integrations/SKILL.md",
+      "reference": "references/business-integrations.md",
+      "tools": [
+        "search_customer_attributes",
+        "get_customer_attribute",
+        "set_customer_attribute_value",
+        "get_integrations",
+        "search_conversations",
+        "search_logs",
+        "list_projects",
+        "read_project_version_files"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "contract",
+      "live_validation": "not_run",
+      "coverage_notes": "Provider receipt semantics depend on NAF; email result_success is not universally proof of final delivery."
+    },
+    {
+      "id": "conversation_tools",
+      "title": "Configure in-conversation actions without writing code",
+      "skill": "skills/newo-integrations/SKILL.md",
+      "reference": "references/business-integrations.md",
+      "tools": [
+        "get_customer_attribute",
+        "set_customer_attribute_value"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "contract",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "mcp_connector",
+      "title": "External MCP and dedicated OAuth2 initialization",
+      "skill": "skills/newo-external-mcp/SKILL.md",
+      "reference": "references/agent-mcp-client.md",
+      "tools": [
+        "get_customers",
+        "get_integrations",
+        "get_connectors",
+        "create_connector",
+        "update_connector",
+        "run_connector",
+        "create_persona",
+        "add_persona_actor",
+        "get_persona",
+        "list_projects",
+        "create_project",
+        "create_project_version",
+        "read_project_version_files",
+        "write_project_version_files",
+        "activate_project_version",
+        "send_event",
+        "search_conversations",
+        "search_logs"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "contract",
+      "live_validation": "not_run",
+      "coverage_notes": "All modes use the customer mcp connector. OAuth2 adds a dedicated persona, actor and local project. send_event sends init_mcp from the dedicated actor. StartOAuth handles the event directly on the actor's MCP connector and checks the actor and persona before sending oauth2_start. Verify the context and the OAuth2 result events."
+    },
+    {
+      "id": "transfers",
+      "title": "Scheduled transfers, extensions and loop prevention",
+      "skill": "skills/newo-launch/SKILL.md",
+      "reference": "references/telephony.md",
+      "tools": [
+        "search_customer_attributes",
+        "get_customer_attribute",
+        "set_customer_attribute_value",
+        "get_connectors"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "attributes",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "sip",
+      "title": "SIP configuration, inbound and outbound calls, RTP and registration",
+      "skill": "skills/newo-launch/SKILL.md",
+      "reference": "references/telephony.md",
+      "tools": [
+        "get_connectors",
+        "update_connector",
+        "run_connector"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "external_step",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "line",
+      "title": "Retain a phone number and configure external forwarding",
+      "skill": "skills/newo-launch/SKILL.md",
+      "reference": "references/telephony.md",
+      "tools": [
+        "get_customers",
+        "get_customer_attribute"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "external_step",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "number",
+      "title": "Phone number information, connector startup and provisioning limits",
+      "skill": "skills/newo-launch/SKILL.md",
+      "reference": "references/telephony.md",
+      "tools": [
+        "get_customers",
+        "get_integrations",
+        "get_connectors"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "preparation",
+      "live_validation": "not_run",
+      "coverage_notes": "No standalone purchase tool; first connector run can buy as a side effect, agent-code purchase is possible but new code is outside this release."
+    },
+    {
+      "id": "launch",
+      "title": "After-hours rollout, initial review and daytime operation",
+      "skill": "skills/newo-launch/SKILL.md",
+      "reference": "references/telephony.md",
+      "tools": [
+        "get_customer_attribute",
+        "set_customer_attribute_value",
+        "list_sessions",
+        "get_session"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "external_step",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "text_test",
+      "title": "Repeatable text tests and regression",
+      "skill": "skills/newo-quality/SKILL.md",
+      "reference": "references/testing.md",
+      "tools": [
+        "get_integrations",
+        "get_connectors",
+        "send_message",
+        "search_conversations",
+        "get_session",
+        "search_logs"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "catalog",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "voice_test",
+      "title": "WebRTC settings and live voice testing",
+      "skill": "skills/newo-quality/SKILL.md",
+      "reference": "references/testing.md",
+      "tools": [
+        "get_customers",
+        "get_integrations",
+        "get_connectors",
+        "list_sessions",
+        "get_session",
+        "search_logs"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "external_step",
+      "live_validation": "not_run",
+      "coverage_notes": "Read actual voice settings; no fabricated browser URL or universal automated-call/Assessor event."
+    },
+    {
+      "id": "test_mode",
+      "title": "Global, persona and project test modes",
+      "skill": "skills/newo-quality/SKILL.md",
+      "reference": "references/testing.md",
+      "tools": [
+        "search_customer_attributes",
+        "get_customer_attribute",
+        "set_customer_attribute_value",
+        "get_persona_attribute",
+        "list_projects",
+        "read_project_version_files",
+        "create_project_version",
+        "write_project_version_files",
+        "activate_project_version"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "project_files",
+      "live_validation": "not_run",
+      "coverage_notes": "Static project list lives in project.yaml or referenced file; no shadow customer field; preserve runtime and rollback constraints."
+    },
+    {
+      "id": "assessor",
+      "title": "Prepare Assessor scenarios and run them using a confirmed event contract",
+      "skill": "skills/newo-quality/SKILL.md",
+      "reference": "references/support.md",
+      "tools": [
+        "send_event",
+        "send_global_event",
+        "get_customer_attribute",
+        "get_session"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "contract",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "review",
+      "title": "Review conversations by period, channel and outcome",
+      "skill": "skills/newo-quality/SKILL.md",
+      "reference": "references/quality-review.md",
+      "tools": [
+        "list_sessions",
+        "get_session",
+        "search_conversations"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "catalog",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "debug",
+      "title": "Diagnose and fix supported issues without programming",
+      "skill": "skills/newo-quality/SKILL.md",
+      "reference": "references/quality-review.md",
+      "tools": [
+        "search_customer_attributes",
+        "search_logs",
+        "search_conversations",
+        "get_customer_attribute",
+        "set_customer_attribute_value"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "attributes",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "session_statistics",
+      "title": "Session counts, channels and outcomes over a period",
+      "skill": "skills/newo-quality/SKILL.md",
+      "reference": "references/quality-review.md",
+      "tools": [
+        "list_sessions",
+        "get_session"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "catalog",
+      "live_validation": "not_run",
+      "coverage_notes": "If a page omits sessions or its completeness is unclear, restart at page 1 with a smaller per or split the time range. Compare unique session IDs with total for the same filters."
+    },
+    {
+      "id": "unit_usage",
+      "title": "Customer unit usage and remaining balance",
+      "skill": "skills/newo-quality/SKILL.md",
+      "reference": "references/quality-review.md",
+      "tools": [
+        "get_customer_usage"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "catalog",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "requirements",
+      "title": "Requirements, acceptance criteria and rollout scope",
+      "skill": "skills/newo-delivery/SKILL.md",
+      "reference": "references/delivery.md",
+      "tools": [
+        "search_customer_attributes",
+        "get_customers",
+        "get_customer_attribute"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "attributes",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "build_tracking",
+      "title": "Map criteria to configuration and results",
+      "skill": "skills/newo-delivery/SKILL.md",
+      "reference": "references/delivery.md",
+      "tools": [
+        "search_customer_attributes",
+        "get_customer_attribute"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "attributes",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "acceptance",
+      "title": "Test report, UAT rounds and customer decision",
+      "skill": "skills/newo-delivery/SKILL.md",
+      "reference": "references/delivery.md",
+      "tools": [
+        "get_session"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "catalog",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "operate",
+      "title": "Handoff, reviews, rollback and regression",
+      "skill": "skills/newo-delivery/SKILL.md",
+      "reference": "references/delivery.md",
+      "tools": [
+        "list_sessions",
+        "get_session"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "catalog",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "multi_customer",
+      "title": "Partner and multi-branch rollout with a pilot",
+      "skill": "skills/newo-delivery/SKILL.md",
+      "reference": "references/delivery.md",
+      "tools": [
+        "search_customer_attributes",
+        "get_customers",
+        "get_customer_attribute",
+        "set_customer_attribute_value"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "attributes",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "support",
+      "title": "Draft a defect report, operations request or improvement proposal",
+      "skill": "skills/newo-delivery/SKILL.md",
+      "reference": "references/support.md",
+      "tools": [],
+      "instruction_status": "documented",
+      "execution_dependency": "preparation",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "version_apply",
+      "title": "Registry-aware init and version application",
+      "skill": "skills/newo-configure/SKILL.md",
+      "reference": "references/versions.md",
+      "tools": [
+        "list_projects",
+        "read_project_version_files",
+        "publish_project_version",
+        "activate_project_version",
+        "search_logs",
+        "activate_registry_module"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "contract",
+      "live_validation": "not_run",
+      "coverage_notes": "A registry attachment in latest mode always runs the latest published release. The UUID in list_projects records the last activation. Restore a local version by its UUID or a registry attachment with activate_registry_module in the original mode. Verify state and init after activation."
+    },
+    {
+      "id": "accounts",
+      "title": "View customer accounts and roles",
+      "skill": "skills/newo-connect/SKILL.md",
+      "reference": "references/connection.md",
+      "tools": [
+        "list_customer_accounts"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "catalog",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "unlink",
+      "title": "Remove access for a specific account",
+      "skill": "skills/newo-connect/SKILL.md",
+      "reference": "references/connection.md",
+      "tools": [
+        "list_customer_accounts",
+        "unlink_account"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "catalog",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "attribute_lifecycle",
+      "title": "Create and delete customer attributes",
+      "skill": "skills/newo-configure/SKILL.md",
+      "reference": "references/configuration.md",
+      "tools": [
+        "search_customer_attributes",
+        "get_customer_attribute",
+        "create_customer_attribute",
+        "delete_customer_attribute"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "catalog",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "personas",
+      "title": "Read, create and delete user personas",
+      "skill": "skills/newo-configure/SKILL.md",
+      "reference": "references/configuration.md",
+      "tools": [
+        "get_persona",
+        "create_persona",
+        "delete_persona"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "catalog",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "persona_actors",
+      "title": "Caller identities on connectors",
+      "skill": "skills/newo-configure/SKILL.md",
+      "reference": "references/configuration.md",
+      "tools": [
+        "get_persona",
+        "add_persona_actor",
+        "delete_persona_actor"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "catalog",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "persona_attributes",
+      "title": "Search, read and update caller attributes",
+      "skill": "skills/newo-configure/SKILL.md",
+      "reference": "references/configuration.md",
+      "tools": [
+        "search_persona_attributes",
+        "get_persona_attribute",
+        "set_persona_attribute_value",
+        "create_persona_attribute",
+        "delete_persona_attribute"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "catalog",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "akb_search",
+      "title": "List and semantically search AKB topics with fields_score",
+      "skill": "skills/newo-knowledge/SKILL.md",
+      "reference": "references/knowledge.md",
+      "tools": [
+        "list_projects",
+        "read_project_version_files",
+        "search_akb_topics",
+        "fuzzy_search_akb_topics"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "catalog",
+      "live_validation": "not_run"
+    },
+    {
+      "id": "incoming_webhooks",
+      "title": "Incoming webhooks and api connector events",
+      "skill": "skills/newo-integrations/SKILL.md",
+      "reference": "references/integrations.md",
+      "tools": [
+        "get_incoming_webhooks",
+        "create_incoming_webhook",
+        "update_incoming_webhook",
+        "delete_incoming_webhook"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "catalog",
+      "live_validation": "not_run",
+      "coverage_notes": "allowed_ips is stored but is not enforced by webhooks_service."
+    },
+    {
+      "id": "outgoing_webhooks",
+      "title": "Outgoing command webhooks and BAA restrictions",
+      "skill": "skills/newo-integrations/SKILL.md",
+      "reference": "references/integrations.md",
+      "tools": [
+        "get_outgoing_webhooks",
+        "create_outgoing_webhook",
+        "update_outgoing_webhook",
+        "delete_outgoing_webhook"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "catalog",
+      "live_validation": "not_run"
+    }
+  ]
+}

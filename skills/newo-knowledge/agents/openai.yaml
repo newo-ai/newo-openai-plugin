@@ -1,0 +1,9 @@
+interface:
+  display_name: "Newo Agent Knowledge"
+  short_description: "Manage AKB topics, retrieve facts and verify answers"
+  default_prompt: "Use $newo-knowledge to add knowledge and verify my agent's answers."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "newo"
+      description: "Newo Customer MCP"
