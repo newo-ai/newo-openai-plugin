@@ -1,0 +1,9 @@
+interface:
+  display_name: "Newo Agent Development"
+  short_description: "Build and migrate agent skills in Python"
+  default_prompt: "Use $newo-develop to trace my agent's event handler and implement the requested change in Python."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "newo"
+      description: "Newo Customer MCP"

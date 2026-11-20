@@ -1,6 +1,6 @@
 interface:
   display_name: "Build a Newo Agent"
-  short_description: "Create a business and agent from a website or Google Maps"
+  short_description: "Create a Newo agent and track provisioning progress"
   default_prompt: "Use $newo-agent-builder to create and configure a Newo agent for my business."
 dependencies:
   tools:

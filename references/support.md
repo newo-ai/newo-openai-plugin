@@ -14,7 +14,7 @@ Collect the information relevant to the request.
 - Porting. Number and country, confirmed authority over the line, responsible contact and preferred window. Treat porting as pending until confirmed.
 - SIP or RTP. Provider, signaling and RTP addresses, transport, observed fault, time and test ID. Omit passwords.
 - Registration check. Connector, time, symptoms and checks already performed. Use verified registration evidence in addition to running status.
-- Assessor. Generalized scenarios, channel, run count, acceptable cost and outcome criteria. Use `send_event` when the established contract requires an actor event and the user requests it. Use `send_global_event` on explicit request for a global event.
+- Assessor. Generalized scenarios, channel, run count, acceptable cost and outcome criteria. Use `send_agent_event` when the established contract requires an actor event and the user requests it. Use `send_global_agent_event` on explicit request for a global event.
 - Industry change, platform error or code need. Business requirement, configuration gap, reproduction steps and impact. Prepare a request for the relevant owner.
 
 Provide draft text and a list of missing details. Ticket IDs, status and outcomes require a supported external process. After the user confirms a change, check its observable result in Customer MCP, such as a provisioned number or a new test conversation.

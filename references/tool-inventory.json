@@ -5,13 +5,13 @@
   "live_catalog_verified": true,
   "catalog_source": {
     "file": "tools-list.json",
-    "sha256": "f2a5d4a5b03632edad35734bfc63bb33aedbd98dffdc08725fa5996ba9454f72",
-    "fetched_at": "2026-11-18T18:21:01.774196+00:00",
+    "sha256": "a149ae87cd4e7a700d3ef24fa542e144305462eefd7620d0090b112d0e02e5bd",
+    "fetched_at": "2026-11-19T21:43:42.724973+00:00",
     "server": {
       "name": "Newo",
       "version": "1.30.0"
     },
-    "tool_count": 56,
+    "tool_count": 57,
     "basis": "fresh_configured_customer_mcp_client_discovery",
     "current_connection_verified": true
   },
@@ -41,8 +41,9 @@
     "create_connector",
     "update_connector",
     "run_connector",
-    "send_event",
-    "send_global_event",
+    "delete_connector",
+    "send_agent_event",
+    "send_global_agent_event",
     "send_message",
     "get_outgoing_webhooks",
     "create_outgoing_webhook",
@@ -67,10 +68,10 @@
     "set_persona_attribute_value",
     "create_persona_attribute",
     "delete_persona_attribute",
-    "search_akb_topics",
-    "fuzzy_search_akb_topics",
-    "create_akb_topic",
-    "delete_akb_topic",
+    "list_knowledge_base_topics",
+    "search_knowledge_base_topics",
+    "create_knowledge_base_topic",
+    "delete_knowledge_base_topic",
     "get_run"
   ],
   "planned_tools": [],
@@ -128,15 +129,16 @@
         "get_connectors",
         "create_connector",
         "update_connector",
-        "run_connector"
+        "run_connector",
+        "delete_connector"
       ]
     },
     {
       "id": "messaging",
       "title": "Events and messages",
       "tools": [
-        "send_event",
-        "send_global_event",
+        "send_agent_event",
+        "send_global_agent_event",
         "send_message"
       ]
     },
@@ -197,10 +199,10 @@
       "id": "akb",
       "title": "Agent knowledge base (AKB)",
       "tools": [
-        "search_akb_topics",
-        "fuzzy_search_akb_topics",
-        "create_akb_topic",
-        "delete_akb_topic"
+        "list_knowledge_base_topics",
+        "search_knowledge_base_topics",
+        "create_knowledge_base_topic",
+        "delete_knowledge_base_topic"
       ]
     },
     {
@@ -253,7 +255,14 @@
         "page",
         "per",
         "total"
-      ]
+      ],
+      "annotations": {
+        "title": "Get customers",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
       "name": "create_customer",
@@ -340,8 +349,17 @@
         "agent_name",
         "test_phone_number",
         "portal_url",
-        "error"
-      ]
+        "error",
+        "steps",
+        "step_count"
+      ],
+      "annotations": {
+        "title": "Create customer",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
     },
     {
       "name": "get_customer_usage",
@@ -380,7 +398,14 @@
         "days",
         "totals",
         "truncated"
-      ]
+      ],
+      "annotations": {
+        "title": "Get customer usage",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
       "name": "list_customer_accounts",
@@ -399,7 +424,14 @@
       "output_fields": [
         "customer_idn",
         "items"
-      ]
+      ],
+      "annotations": {
+        "title": "List customer accounts",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
       "name": "unlink_account",
@@ -423,7 +455,14 @@
       "output_fields": [
         "customer_idn",
         "email"
-      ]
+      ],
+      "annotations": {
+        "title": "Unlink account",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
       "name": "list_sessions",
@@ -490,7 +529,14 @@
         "per",
         "total",
         "truncated"
-      ]
+      ],
+      "annotations": {
+        "title": "List sessions",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
       "name": "get_session",
@@ -535,7 +581,14 @@
         "messages",
         "earlier_messages_omitted",
         "truncated"
-      ]
+      ],
+      "annotations": {
+        "title": "Get session",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
       "name": "search_conversations",
@@ -622,7 +675,14 @@
         "acts",
         "next_cursor",
         "truncated"
-      ]
+      ],
+      "annotations": {
+        "title": "Search conversations",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
       "name": "search_logs",
@@ -698,7 +758,14 @@
         "per",
         "total",
         "truncated"
-      ]
+      ],
+      "annotations": {
+        "title": "Search logs",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
       "name": "list_projects",
@@ -718,7 +785,14 @@
         "projects",
         "projects_total",
         "truncated"
-      ]
+      ],
+      "annotations": {
+        "title": "List projects",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
       "name": "create_project",
@@ -761,7 +835,14 @@
         "registry_item",
         "created_at",
         "updated_at"
-      ]
+      ],
+      "annotations": {
+        "title": "Create project",
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
     },
     {
       "name": "update_project",
@@ -801,7 +882,14 @@
         "registry_item",
         "created_at",
         "updated_at"
-      ]
+      ],
+      "annotations": {
+        "title": "Update project",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
       "name": "delete_project",
@@ -826,7 +914,14 @@
       "output_fields": [
         "project_id",
         "project_idn"
-      ]
+      ],
+      "annotations": {
+        "title": "Delete project",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
       "name": "read_project_version_files",
@@ -863,7 +958,14 @@
         "size",
         "total_chars",
         "truncated"
-      ]
+      ],
+      "annotations": {
+        "title": "Read project version files",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
       "name": "create_project_version",
@@ -908,7 +1010,14 @@
         "latest_error",
         "created_at",
         "updated_at"
-      ]
+      ],
+      "annotations": {
+        "title": "Create project version",
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
     },
     {
       "name": "write_project_version_files",
@@ -944,7 +1053,14 @@
         "project_version_id",
         "written",
         "deleted"
-      ]
+      ],
+      "annotations": {
+        "title": "Write project version files",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
       "name": "delete_project_version",
@@ -969,7 +1085,14 @@
       "output_fields": [
         "project_version_id",
         "project_idn"
-      ]
+      ],
+      "annotations": {
+        "title": "Delete project version",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
       "name": "publish_project_version",
@@ -1003,7 +1126,14 @@
         "latest_error",
         "created_at",
         "updated_at"
-      ]
+      ],
+      "annotations": {
+        "title": "Publish project version",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
       "name": "activate_project_version",
@@ -1031,7 +1161,14 @@
         "previous_project_version_id",
         "version",
         "external_event_id"
-      ]
+      ],
+      "annotations": {
+        "title": "Activate project version",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
     },
     {
       "name": "get_integrations",
@@ -1047,7 +1184,14 @@
       "output_fields": [
         "integrations",
         "truncated"
-      ]
+      ],
+      "annotations": {
+        "title": "Get integrations",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
       "name": "get_connectors",
@@ -1075,7 +1219,14 @@
       ],
       "output_fields": [
         "integrations"
-      ]
+      ],
+      "annotations": {
+        "title": "Get connectors",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
       "name": "create_connector",
@@ -1122,7 +1273,14 @@
         "status",
         "api_key",
         "settings"
-      ]
+      ],
+      "annotations": {
+        "title": "Create connector",
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
     },
     {
       "name": "update_connector",
@@ -1164,7 +1322,14 @@
         "status",
         "api_key",
         "settings"
-      ]
+      ],
+      "annotations": {
+        "title": "Update connector",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
     },
     {
       "name": "run_connector",
@@ -1206,10 +1371,60 @@
         "status",
         "api_key",
         "settings"
-      ]
+      ],
+      "annotations": {
+        "title": "Start or stop connector",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
     },
     {
-      "name": "send_event",
+      "name": "delete_connector",
+      "group": "connectors",
+      "required_parameters": [
+        "connector_idn",
+        "customer_idn",
+        "integration_idn"
+      ],
+      "parameters": [
+        {
+          "name": "customer_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "integration_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        },
+        {
+          "name": "connector_idn",
+          "type": "string",
+          "required": true,
+          "pattern": "^[a-zA-Z_][a-zA-Z0-9_]*$"
+        }
+      ],
+      "output_fields": [
+        "idn",
+        "title",
+        "status",
+        "api_key",
+        "settings"
+      ],
+      "annotations": {
+        "title": "Delete connector",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "send_agent_event",
       "group": "messaging",
       "required_parameters": [
         "actor_id",
@@ -1250,10 +1465,17 @@
       "output_fields": [
         "external_event_id",
         "sent_at"
-      ]
+      ],
+      "annotations": {
+        "title": "Send agent event",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
     },
     {
-      "name": "send_global_event",
+      "name": "send_global_agent_event",
       "group": "messaging",
       "required_parameters": [
         "connector_idn",
@@ -1301,7 +1523,14 @@
       "output_fields": [
         "external_event_id",
         "sent_at"
-      ]
+      ],
+      "annotations": {
+        "title": "Send global agent event",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
     },
     {
       "name": "send_message",
@@ -1345,7 +1574,14 @@
         "actor_external_id",
         "external_event_id",
         "sent_at"
-      ]
+      ],
+      "annotations": {
+        "title": "Send message",
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
     },
     {
       "name": "get_outgoing_webhooks",
@@ -1369,7 +1605,14 @@
       "output_fields": [
         "webhooks",
         "truncated"
-      ]
+      ],
+      "annotations": {
+        "title": "Get outgoing webhooks",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
       "name": "create_outgoing_webhook",
@@ -1423,7 +1666,14 @@
         "connector_idn",
         "command_idns",
         "description"
-      ]
+      ],
+      "annotations": {
+        "title": "Create outgoing webhook",
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
     },
     {
       "name": "update_outgoing_webhook",
@@ -1472,7 +1722,14 @@
         "connector_idn",
         "command_idns",
         "description"
-      ]
+      ],
+      "annotations": {
+        "title": "Update outgoing webhook",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
     },
     {
       "name": "delete_outgoing_webhook",
@@ -1501,7 +1758,14 @@
         "connector_idn",
         "command_idns",
         "description"
-      ]
+      ],
+      "annotations": {
+        "title": "Delete outgoing webhook",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
       "name": "get_incoming_webhooks",
@@ -1525,7 +1789,14 @@
       "output_fields": [
         "webhooks",
         "truncated"
-      ]
+      ],
+      "annotations": {
+        "title": "Get incoming webhooks",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
       "name": "create_incoming_webhook",
@@ -1585,7 +1856,14 @@
         "allowed_ips",
         "response_payload",
         "description"
-      ]
+      ],
+      "annotations": {
+        "title": "Create incoming webhook",
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      }
     },
     {
       "name": "update_incoming_webhook",
@@ -1641,7 +1919,14 @@
         "allowed_ips",
         "response_payload",
         "description"
-      ]
+      ],
+      "annotations": {
+        "title": "Update incoming webhook",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
     },
     {
       "name": "delete_incoming_webhook",
@@ -1672,7 +1957,14 @@
         "allowed_ips",
         "response_payload",
         "description"
-      ]
+      ],
+      "annotations": {
+        "title": "Delete incoming webhook",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
       "name": "search_customer_attributes",
@@ -1696,7 +1988,14 @@
       "output_fields": [
         "attributes",
         "truncated"
-      ]
+      ],
+      "annotations": {
+        "title": "Search customer attributes",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
       "name": "get_customer_attribute",
@@ -1729,7 +2028,14 @@
         "possible_values",
         "is_hidden",
         "is_read_only"
-      ]
+      ],
+      "annotations": {
+        "title": "Get customer attribute",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
       "name": "set_customer_attribute_value",
@@ -1768,7 +2074,14 @@
         "possible_values",
         "is_hidden",
         "is_read_only"
-      ]
+      ],
+      "annotations": {
+        "title": "Set customer attribute value",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
       "name": "create_customer_attribute",
@@ -1849,7 +2162,14 @@
         "possible_values",
         "is_hidden",
         "is_read_only"
-      ]
+      ],
+      "annotations": {
+        "title": "Create customer attribute",
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
     },
     {
       "name": "delete_customer_attribute",
@@ -1882,7 +2202,14 @@
         "possible_values",
         "is_hidden",
         "is_read_only"
-      ]
+      ],
+      "annotations": {
+        "title": "Delete customer attribute",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
       "name": "get_persona",
@@ -1910,7 +2237,14 @@
         "title",
         "description",
         "actors"
-      ]
+      ],
+      "annotations": {
+        "title": "Get persona",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
       "name": "create_persona",
@@ -1948,7 +2282,14 @@
         "title",
         "description",
         "actors"
-      ]
+      ],
+      "annotations": {
+        "title": "Create persona",
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
     },
     {
       "name": "delete_persona",
@@ -1976,7 +2317,14 @@
         "title",
         "description",
         "actors"
-      ]
+      ],
+      "annotations": {
+        "title": "Delete persona",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
       "name": "add_persona_actor",
@@ -2044,7 +2392,14 @@
         "contact_information",
         "labels",
         "time_zone_identifier"
-      ]
+      ],
+      "annotations": {
+        "title": "Add persona actor",
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
     },
     {
       "name": "delete_persona_actor",
@@ -2082,7 +2437,14 @@
         "contact_information",
         "labels",
         "time_zone_identifier"
-      ]
+      ],
+      "annotations": {
+        "title": "Delete persona actor",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
       "name": "search_persona_attributes",
@@ -2112,7 +2474,14 @@
       "output_fields": [
         "attributes",
         "truncated"
-      ]
+      ],
+      "annotations": {
+        "title": "Search persona attributes",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
       "name": "get_persona_attribute",
@@ -2150,7 +2519,14 @@
         "value_type",
         "possible_values",
         "is_hidden"
-      ]
+      ],
+      "annotations": {
+        "title": "Get persona attribute",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
       "name": "set_persona_attribute_value",
@@ -2194,7 +2570,14 @@
         "value_type",
         "possible_values",
         "is_hidden"
-      ]
+      ],
+      "annotations": {
+        "title": "Set persona attribute value",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
       "name": "create_persona_attribute",
@@ -2280,7 +2663,14 @@
         "value_type",
         "possible_values",
         "is_hidden"
-      ]
+      ],
+      "annotations": {
+        "title": "Create persona attribute",
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
     },
     {
       "name": "delete_persona_attribute",
@@ -2318,10 +2708,17 @@
         "value_type",
         "possible_values",
         "is_hidden"
-      ]
+      ],
+      "annotations": {
+        "title": "Delete persona attribute",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
-      "name": "search_akb_topics",
+      "name": "list_knowledge_base_topics",
       "group": "akb",
       "required_parameters": [
         "agent_idn",
@@ -2374,10 +2771,17 @@
         "per",
         "total",
         "truncated"
-      ]
+      ],
+      "annotations": {
+        "title": "List knowledge base topics",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
-      "name": "fuzzy_search_akb_topics",
+      "name": "search_knowledge_base_topics",
       "group": "akb",
       "required_parameters": [
         "agent_idn",
@@ -2436,10 +2840,17 @@
       "output_fields": [
         "topics",
         "truncated"
-      ]
+      ],
+      "annotations": {
+        "title": "Search knowledge base topics",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
-      "name": "create_akb_topic",
+      "name": "create_knowledge_base_topic",
       "group": "akb",
       "required_parameters": [
         "agent_idn",
@@ -2504,10 +2915,17 @@
         "confidence",
         "created_at",
         "updated_at"
-      ]
+      ],
+      "annotations": {
+        "title": "Create knowledge base topic",
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
     },
     {
-      "name": "delete_akb_topic",
+      "name": "delete_knowledge_base_topic",
       "group": "akb",
       "required_parameters": [
         "agent_idn",
@@ -2550,7 +2968,14 @@
         "confidence",
         "created_at",
         "updated_at"
-      ]
+      ],
+      "annotations": {
+        "title": "Delete knowledge base topic",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
       "name": "get_run",
@@ -2563,6 +2988,13 @@
           "name": "run_id",
           "type": "string",
           "required": true
+        },
+        {
+          "name": "after_step",
+          "type": "integer",
+          "required": false,
+          "default": 0,
+          "minimum": 0
         }
       ],
       "output_fields": [
@@ -2573,8 +3005,17 @@
         "agent_name",
         "test_phone_number",
         "portal_url",
-        "error"
-      ]
+        "error",
+        "steps",
+        "step_count"
+      ],
+      "annotations": {
+        "title": "Get agent creation run",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      }
     },
     {
       "name": "activate_registry_module",
@@ -2629,7 +3070,14 @@
         "previous_project_version_id",
         "previous_registry_module",
         "external_event_id"
-      ]
+      ],
+      "annotations": {
+        "title": "Activate registry module",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      }
     }
   ],
   "documentation_sources": [
@@ -2666,12 +3114,12 @@
     }
   ],
   "runtime_validation": {
-    "checked_on": "2026-11-18",
+    "checked_on": "2026-11-20",
     "basis": "fresh_mcp_catalog_via_configured_client",
-    "tool_count": 56,
+    "tool_count": 57,
     "read_only_checks": [
       "MCP tool catalog discovery",
-      "send_event and send_global_event schema comparison"
+      "Comparison of input and output schemas and tool annotations against the previous catalog"
     ],
     "customer_mutations": "not_run",
     "customer_uat": "not_run",
@@ -2680,18 +3128,33 @@
   "runtime_contract_notes": {
     "list_projects": "A registry attachment without a pinned version always runs the latest published module release, including later publications. For registry, active_project_version_id records the version at last activation. An accessible UUID can be read or forked even when absent from local versions.",
     "read_project_version_files": "Project attributes are in project.yaml or a file it references. Reading a truncated file is not enough to overwrite it.",
-    "write_project_version_files": "Whole-file replacement in a draft; supports targeted project-attribute edits through a fork, not a separate scope argument.",
+    "write_project_version_files": "Whole-file replacement in a draft. Supports requested agent-code and targeted project-attribute edits through a fork.",
     "activate_project_version": "Only customer_idn and project_version_id; no all/project_idn overload. Init event is project_publish_finish in current documentation; owner prose used project_publish_finished.",
     "create_incoming_webhook": "allowed_ips is stored but webhooks_service does not enforce it.",
     "set_customer_attribute_value": "Value is saved immediately; init-dependent effects depend on NAF code.",
     "get_connectors": "Returned connector api_key is not automatically masked; distinguish it from external credentials. Filter integration_idn+connector_idn replaces a separate getter.",
-    "create_customer": "Before the call, keep only the first IDN from get_customers page 1 with per 1. After an uncertain outcome, verify the latest IDN and any candidate before retrying.",
+    "create_customer": "Before calling, keep only the newest customer IDN from page 1 with per 1. Standard creation starts a run and returns its state and any research steps. After an uncertain outcome, verify a candidate customer before retrying.",
     "update_connector": "Send only the changed settings. Omitted values stay unchanged. A targeted customer retest verified partial update and rollback with one field on the api integration and two WebRTC fields.",
     "list_sessions": "Results can be shortened. Restart pagination at page 1 with a smaller size if records are missing, then check unique session IDs against total for the same filters.",
-    "send_event": "Actor event. Pass the actor UUID as actor_id. The actor determines the integration, connector, persona and session context.",
-    "send_global_event": "Connector event without caller or session. Use only on an explicit request for a global event. OAuth2 init_mcp requires an actor event."
+    "send_agent_event": "Actor event. Pass the actor UUID as actor_id. The actor determines the integration, connector, persona and session context.",
+    "send_global_agent_event": "Connector event without caller or session. Use only on an explicit request for a global event. OAuth2 init_mcp requires an actor event.",
+    "get_run": "Poll the same run_id with after_step set to the last known step_count. Report only the new steps and retain the cursor when step_count is omitted.",
+    "get_customers": "A detailed customer result includes portal_url. The current CustomerDto no longer declares billing_url.",
+    "delete_connector": "Permanently deletes a stopped connector and its webhooks. Removing a phone or SMS connector can release its number. Use only within an explicitly authorized deletion."
   },
   "catalog_source_history": [
+    {
+      "file": "tools-list.json",
+      "sha256": "f2a5d4a5b03632edad35734bfc63bb33aedbd98dffdc08725fa5996ba9454f72",
+      "fetched_at": "2026-11-18T18:21:01.774196+00:00",
+      "server": {
+        "name": "Newo",
+        "version": "1.30.0"
+      },
+      "tool_count": 56,
+      "basis": "fresh_configured_customer_mcp_client_discovery",
+      "current_connection_verified": true
+    },
     {
       "file": "tools-list.json",
       "sha256": "a7c176b167131eecd00c39ddddc2a95c06cb7ed7c6288649c5474cdf40b43ee7",
@@ -2718,6 +3181,18 @@
     }
   ],
   "runtime_validation_history": [
+    {
+      "checked_on": "2026-11-18",
+      "basis": "fresh_mcp_catalog_via_configured_client",
+      "tool_count": 56,
+      "read_only_checks": [
+        "MCP tool catalog discovery",
+        "send_event and send_global_event schema comparison"
+      ],
+      "customer_mutations": "not_run",
+      "customer_uat": "not_run",
+      "scope": "Distribution template; customer-specific executions are recorded outside the package"
+    },
     {
       "checked_on": "2026-11-18",
       "basis": "fresh_mcp_catalog_via_configured_client",

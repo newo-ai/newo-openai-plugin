@@ -12,6 +12,10 @@ Use Customer MCP for all actions. Start with `get_integrations`. Without a filte
 6. Partial updates were verified on `api` and WebRTC. On HTTP 400, read back state and check the supplied keys, types and dependencies. If the cause remains unclear, record the request keys and error without secret values.
 7. Read back the connector and compare the intended changes and other fields with the baseline. To roll back, first check current state, then restore only the affected fields and verify by reading again.
 
+## Delete a connector
+
+Use `delete_connector` with the exact `customer_idn`, `integration_idn` and `connector_idn` of an authorized deletion. Read the connector status and identify affected webhooks before deleting. Deletion permanently removes the connector and its webhooks. For phone or SMS, it can also release the number. Confirm these effects with the user before proceeding. If the connector is running, stop it with `run_connector(is_run=false)` within the authorized change, then verify `stopped`. After deletion, check that the connector and its webhooks no longer appear in the relevant lists.
+
 ## Voice, STT and SIP
 
 `newo_voice` is the integration IDN. `newo_voice_connector` and `newo_voice_connector_web` can be individual connector IDNs. Inspect the actual connector settings to identify phone or WebRTC. The metadata supports `webrtc` as a provider and includes `webrtc_allowed_origins`. Get the actual calling address from a supported client contract. Select model, provider, voice and `v2v_mode_user_stt` from metadata. Use the string `"None"` only when declared. Native recognition and separate STT are distinct settings. Test languages, numbers, names, pauses and interruptions on the real channel.
@@ -34,4 +38,4 @@ Change SIP and its authorization using declared connector settings. Read the age
 
 ## Agent actions
 
-Use [agent-mcp-client.md](agent-mcp-client.md) for external MCP and OAuth and [business-integrations.md](business-integrations.md) for CRM, calendars, booking and `project_attributes_settings_platform_tools`. Use existing commands and handlers. `send_event` raises an event from `actor_id` on the actor's connector. Use `send_global_event` with integration and connector on explicit request for a global event. Both can cause real calls, SMS or email. Match logs by `external_event_id` and acts from `sent_at`.
+Use [agent-mcp-client.md](agent-mcp-client.md) for external MCP and OAuth and [business-integrations.md](business-integrations.md) for CRM, calendars, booking and `project_attributes_settings_platform_tools`. Use existing commands and handlers. `send_agent_event` raises an event from `actor_id` on the actor's connector. Use `send_global_agent_event` with integration and connector on explicit request for a global event. Both can cause real calls, SMS or email. Match logs by `external_event_id` and acts from `sent_at`.

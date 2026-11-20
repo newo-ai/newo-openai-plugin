@@ -4,6 +4,8 @@
 
 This procedure draws on the Confluence pages “MCP Usage” (323944449, version 4), “MCP: tools & OAuth2” (615940100, version 5) and “Projects v2: Overview and Key Components” (506101766, version 2). Use the current Customer MCP schemas for creation and updates.
 
+For runtime tool discovery and generation after setup, use the [Python action reference](python-actions.md#events-messages-and-integrations) and [development guide](agent-development.md#generate-text-structured-results-or-a-stream).
+
 ## Inputs
 
 Identify the `customer_idn`, MCP server address and authorization method. Supported methods include no authorization, headers, JWT and OAuth2. Confirm the intended use, existing connection and required tools. For OAuth2, find out which scopes the provider needs and who will open the consent link. A preconfigured `client_id` may be optional when the provider supports discovery and client registration.
@@ -41,8 +43,8 @@ Use a unique connector IDN containing ASCII letters, digits and underscores. Sta
 
 ## Send init_mcp
 
-1. Confirm the connector is running and the `send_event` schema requires `actor_id`. Call `send_event` with `customer_idn`, the dedicated `actor_id` and `event_idn="init_mcp"`. The tool gets the integration and connector from the actor. Record `external_event_id` and `sent_at`. Refresh the client catalog before calling if it still shows the older schema.
-2. `StartOAuth` receives `init_mcp` directly from the actor on `mcp/<connector_idn>`. It verifies the actual actor and persona, then sends `oauth2_start` with `newo.commands.send`. OAuth2 requires persona and actor context. Never start it with `send_global_event` or `project_publish_finish`.
+1. Confirm the connector is running and the `send_agent_event` schema requires `actor_id`. Call `send_agent_event` with `customer_idn`, the dedicated `actor_id` and `event_idn="init_mcp"`. The tool gets the integration and connector from the actor. Record `external_event_id` and `sent_at`. Refresh the client catalog before calling if it still shows the older schema.
+2. `StartOAuth` receives `init_mcp` directly from the actor on `mcp/<connector_idn>`. It verifies the actual actor and persona, then sends `oauth2_start` with `newo.commands.send`. OAuth2 requires persona and actor context. Never start it with `send_global_agent_event` or `project_publish_finish`.
 3. Verify `StartOAuth` and the command with `search_logs(external_event_id=...)`. Query `search_conversations` from `sent_at` with `connector="mcp/<connector_idn>"`, `event_names=["init_mcp"]`, `turn_type="custom"` and `user_actor_ids=[...]`. Match `external_event_id`, `user_actor_id` and `user_persona_id`. On timeout, check acts and logs before retrying. For reauthorization, send `init_mcp` from the same actor.
 
 ## Local project template

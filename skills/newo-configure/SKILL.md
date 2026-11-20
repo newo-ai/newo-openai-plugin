@@ -17,6 +17,6 @@ Use `get_persona`, `create_persona` and `add_persona_actor` for caller records. 
 
 Customer values save immediately. Whether initialization is required depends on the NAF implementation. A `latest` registry attachment always runs the most recent published version. Follow [versions.md](../../references/versions.md) for initialization by UUID and for restoring a registry attachment after a local fork.
 
-Project attributes live in `project.yaml` or a referenced file. For an explicit technical request, inspect and edit them in a fork using [project-attributes.md](../../references/project-attributes.md). Customer and project attributes have separate contracts. Workflow Builder itself is unavailable through Customer MCP. Use existing attributes and AKB topics for supported changes, then test a new conversation using [testing.md](../../references/testing.md).
+Project attributes live in `project.yaml` or a referenced file. For an explicit technical request, inspect and edit them in a fork using [project-attributes.md](../../references/project-attributes.md). Customer and project attributes have separate contracts. Workflow Builder itself is unavailable through Customer MCP. Use existing attributes and AKB topics for supported configuration changes. For an explicit code or subscription change, use [newo-develop](../newo-develop/SKILL.md). Verify behavior in a new conversation using [testing.md](../../references/testing.md).
 
 Report changes, read-back, new tests, findings and available rollback steps.

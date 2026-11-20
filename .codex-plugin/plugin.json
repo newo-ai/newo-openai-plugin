@@ -1,7 +1,7 @@
 {
   "name": "newo-agent-builder",
-  "version": "0.9.7",
-  "description": "Create, configure, test and launch Newo agents through Customer MCP, including external MCP connectors and a dedicated local OAuth2 initialization project.",
+  "version": "0.9.9",
+  "description": "Create, configure, develop, test and launch Newo agents through Customer MCP. Develop Python WASM skills and connect external MCP servers.",
   "author": {
     "name": "Alex",
     "email": "support@newo.ai"
@@ -10,7 +10,7 @@
   "interface": {
     "displayName": "Newo Agent Builder",
     "shortDescription": "Build and configure agents",
-    "longDescription": "Nine skills cover customer and agent creation, customer and persona attributes, targeted project attributes, registry initialization, health checks, AKB, integrations, WebRTC, webhooks, sandbox, diagnostics and delivery. The external MCP skill configures a customer connector and, for OAuth2, creates a separate local project with Python WASM handlers for authorization and result events. Full customer UAT for this package is pending. Uses the user’s language and defaults to English. For support, contact support@newo.ai.",
+    "longDescription": "Ten skills cover agent creation, configuration, Python WASM development, knowledge, integrations, sandbox testing, diagnostics and rollout. The development guide covers event handlers, SDK actions, and migration from legacy code. The external MCP skill configures a customer connector and, for OAuth2, creates a local project for authorization and result events. Full customer UAT for this package is pending. Uses the user’s language and defaults to English. For support, contact support@newo.ai.",
     "developerName": "Alex",
     "category": "Developer Tools",
     "capabilities": [
@@ -51,7 +51,7 @@
             {
               "description": "Retrieve an agreed parking policy from the demo agent knowledge base. Seed a synthetic parking policy topic and confirm the demo uses AKB before review.",
               "prompt": "Find the parking policy in the agent knowledge base for the only Newo business available to this account. Summarize what the matching topic says.",
-              "tools_triggered": "get_customers, list_projects, read_project_version_files, fuzzy_search_akb_topics",
+              "tools_triggered": "get_customers, list_projects, read_project_version_files, search_knowledge_base_topics",
               "expected_behavior": "Finds the seeded parking policy topic for the demo agent and summarizes its facts. No topics are created, edited or deleted."
             },
             {
@@ -78,13 +78,13 @@
             },
             {
               "description": "OAuth2 initialization requires an actor event. Explain that init_mcp needs the dedicated connector actor and leave the authorization state untouched.",
-              "prompt": "Start external MCP OAuth2 for the only Newo business available to this account by sending init_mcp through send_global_event."
+              "prompt": "Start external MCP OAuth2 for the only Newo business available to this account by sending init_mcp through send_global_agent_event."
             }
           ]
         }
       },
       "publication": {
-        "release_notes": "Newo Agent Builder 0.9.7 adds review cases for customer discovery, configuration reads, knowledge retrieval, sandbox testing and a reversible demo attribute update. The negative cases cover inaccessible customers, incomplete edit requests and invalid OAuth2 startup context."
+        "release_notes": "Newo Agent Builder 0.9.9 adds a Python WASM development skill, a guide to agent code and migration, and signatures and usage rules for 77 Script Runner actions. Existing agent creation, configuration and quality skills now route code requests to the development workflow."
       }
     }
   }

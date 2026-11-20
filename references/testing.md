@@ -15,7 +15,7 @@ Specify the acceptance criterion, conditions, messages, expected fact, forbidden
 
 ## Events and real actions
 
-`send_event` takes `customer_idn`, `actor_id` and `event_idn` and raises a caller event on the actor's connector and in their session. On an explicit request for a global event, use `send_global_event` with `customer_idn`, `integration_idn`, `connector_idn` and `event_idn`. A global event has no caller or session. Both can trigger real calls, SMS or email. Check events and arguments in `get_integrations` metadata and actual subscriptions.
+`send_agent_event` takes `customer_idn`, `actor_id` and `event_idn` and raises a caller event on the actor's connector and in their session. On an explicit request for a global event, use `send_global_agent_event` with `customer_idn`, `integration_idn`, `connector_idn` and `event_idn`. A global event has no caller or session. Both can trigger real calls, SMS or email. Check events and arguments in `get_integrations` metadata and actual subscriptions.
 
 Both tools return `external_event_id` and `sent_at` before flow execution. Find logs by `external_event_id` and acts from `sent_at`. For actor events, match `user_actor_id`, `user_persona_id` and connector. Use a supplied `external_event_id` for correlation. It does not guarantee deduplication.
 
