@@ -3,11 +3,6 @@
     "newo": {
       "type": "http",
       "url": "https://api.newo.ai/api/v1/customer-mcp",
-      "oauth": {
-        "clientId": "g2t0mUwvyASY6OC9F76xvNBSFfZjSyfe",
-        "callbackPort": 8765,
-        "callbackUrl": "http://localhost:8765/callback"
-      },
       "extensions": {
         "com.openai": {
           "auth": {

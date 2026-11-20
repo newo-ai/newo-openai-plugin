@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "scope": "user_operations_with_targeted_project_attribute_configuration_and_external_mcp_oauth_project",
-  "instruction_coverage": "aligned_with_owner_clarifications_confluence_a14ef37_and_runtime_metadata",
+  "scope": "user_operations_with_python_agent_development_project_attributes_and_external_mcp_oauth",
+  "instruction_coverage": "owner_clarifications_customer_mcp_metadata_superagent_c2efa57_and_script_runner_source",
   "not_live_certification": true,
   "dependency_legend": {
     "catalog": "Use known tools after checking current schemas and access.",
@@ -9,7 +9,7 @@
     "contract": "Needs exact event, attribute, integration or apply contract; do not infer missing semantics.",
     "external_step": "Requires user/operator action outside Customer MCP; plugin prepares and verifies only its available portion.",
     "preparation": "Prepare text for the user only; no sending, ticket tracking or execution of the requested external operation.",
-    "project_files": "Requires an accessible active version, complete file content, explicit targeted project-attribute change, draft/fork and version application."
+    "project_files": "Requires complete files, an accessible source version when forking and authorization for the draft changes and any activation."
   },
   "cases": [
     {
@@ -51,7 +51,7 @@
       "instruction_status": "documented",
       "execution_dependency": "catalog",
       "live_validation": "not_run",
-      "coverage_notes": "Record only the most recent customer IDN before creation. If the result is uncertain, compare it with a fresh first-page result and verify the candidate before continuing."
+      "coverage_notes": "Record only the most recent customer IDN before creation. Poll the same run with after_step set to the last step_count and surface new research steps. If creation is uncertain, compare the latest IDN with the baseline and verify the candidate before continuing."
     },
     {
       "id": "setup",
@@ -148,9 +148,9 @@
         "search_customer_attributes",
         "get_customer_attribute",
         "set_customer_attribute_value",
-        "search_akb_topics",
-        "create_akb_topic",
-        "delete_akb_topic"
+        "list_knowledge_base_topics",
+        "create_knowledge_base_topic",
+        "delete_knowledge_base_topic"
       ],
       "instruction_status": "documented",
       "execution_dependency": "contract",
@@ -317,10 +317,10 @@
       "skill": "skills/newo-knowledge/SKILL.md",
       "reference": "references/knowledge.md",
       "tools": [
-        "search_akb_topics",
-        "fuzzy_search_akb_topics",
-        "create_akb_topic",
-        "delete_akb_topic"
+        "list_knowledge_base_topics",
+        "search_knowledge_base_topics",
+        "create_knowledge_base_topic",
+        "delete_knowledge_base_topic"
       ],
       "instruction_status": "documented",
       "execution_dependency": "catalog",
@@ -333,8 +333,8 @@
       "skill": "skills/newo-knowledge/SKILL.md",
       "reference": "references/knowledge.md",
       "tools": [
-        "create_akb_topic",
-        "search_akb_topics",
+        "create_knowledge_base_topic",
+        "list_knowledge_base_topics",
         "send_message",
         "search_conversations"
       ],
@@ -355,8 +355,8 @@
         "get_customer_attribute",
         "set_customer_attribute_value",
         "send_message",
-        "search_akb_topics",
-        "fuzzy_search_akb_topics"
+        "list_knowledge_base_topics",
+        "search_knowledge_base_topics"
       ],
       "instruction_status": "documented",
       "execution_dependency": "contract",
@@ -400,19 +400,20 @@
     },
     {
       "id": "connector",
-      "title": "Create, update, start or stop a connector",
+      "title": "Create, update, start, stop or delete a connector",
       "skill": "skills/newo-integrations/SKILL.md",
       "reference": "references/integrations.md",
       "tools": [
         "get_connectors",
         "create_connector",
         "update_connector",
-        "run_connector"
+        "run_connector",
+        "delete_connector"
       ],
       "instruction_status": "documented",
       "execution_dependency": "catalog",
       "live_validation": "not_run",
-      "coverage_notes": "Use get_integrations to validate setting keys and get_connectors for baseline and readback. Send only changed keys. Preserve omitted values and roll back only affected keys. The test covered one field on the api integration and two WebRTC fields."
+      "coverage_notes": "Use get_integrations and get_connectors to verify settings. Send only changed keys and roll back only affected keys. The partial-write test covered one api field and two WebRTC fields. Authorized deletion requires a stopped connector and permanently removes its webhooks. Phone or SMS deletion can release the number."
     },
     {
       "id": "calendar",
@@ -514,14 +515,14 @@
         "read_project_version_files",
         "write_project_version_files",
         "activate_project_version",
-        "send_event",
+        "send_agent_event",
         "search_conversations",
         "search_logs"
       ],
       "instruction_status": "documented",
       "execution_dependency": "contract",
       "live_validation": "not_run",
-      "coverage_notes": "All modes use the customer mcp connector. OAuth2 adds a dedicated persona, actor and local project. send_event sends init_mcp from the dedicated actor. StartOAuth handles the event directly on the actor's MCP connector and checks the actor and persona before sending oauth2_start. Verify the context and the OAuth2 result events."
+      "coverage_notes": "All modes use the customer mcp connector. OAuth2 adds a dedicated persona, actor and local project. send_agent_event sends init_mcp from the dedicated actor. StartOAuth handles the event directly on the actor's MCP connector and checks the actor and persona before sending oauth2_start. Verify the context and the OAuth2 result events."
     },
     {
       "id": "transfers",
@@ -657,8 +658,8 @@
       "skill": "skills/newo-quality/SKILL.md",
       "reference": "references/support.md",
       "tools": [
-        "send_event",
-        "send_global_event",
+        "send_agent_event",
+        "send_global_agent_event",
         "get_customer_attribute",
         "get_session"
       ],
@@ -909,8 +910,8 @@
       "tools": [
         "list_projects",
         "read_project_version_files",
-        "search_akb_topics",
-        "fuzzy_search_akb_topics"
+        "list_knowledge_base_topics",
+        "search_knowledge_base_topics"
       ],
       "instruction_status": "documented",
       "execution_dependency": "catalog",
@@ -946,6 +947,30 @@
       "instruction_status": "documented",
       "execution_dependency": "catalog",
       "live_validation": "not_run"
+    },
+    {
+      "id": "python_agent_development",
+      "title": "Develop or migrate a Python WASM agent skill",
+      "skill": "skills/newo-develop/SKILL.md",
+      "reference": "references/agent-development.md",
+      "tools": [
+        "get_customers",
+        "list_projects",
+        "read_project_version_files",
+        "create_project_version",
+        "write_project_version_files",
+        "publish_project_version",
+        "activate_project_version",
+        "activate_registry_module",
+        "send_agent_event",
+        "send_message",
+        "search_conversations",
+        "search_logs"
+      ],
+      "instruction_status": "documented",
+      "execution_dependency": "project_files",
+      "live_validation": "not_run",
+      "coverage_notes": "Verify the event route, full draft diff, expected effect and rollback on an authorized test customer. For Guidance, offer a migration before changing behavior."
     }
   ]
 }

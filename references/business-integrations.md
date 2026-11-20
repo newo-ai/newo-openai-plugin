@@ -46,7 +46,7 @@ If booking is unavailable, collect a request for staff and say that the appointm
 - `after_actions` run in order for a nonempty webhook response. `set_prompt_section` requires `section_name`, `set_persona_attribute` requires `attribute_name` and `send_urgent_message` forwards the response immediately. Keep unverified external content out of system instructions.
 - `conflictPolicy.tag` makes tools with the same tag mutually exclusive within one selection. Deduplication across turns or retries requires separate handling.
 
-Test one read tool before enabling a write tool. Preserve other keys in `tools`. Validate JSON and current schema before `set_customer_attribute_value`. Confirm the exact handler contract. The configuration action `send_event` and the Customer MCP tool of the same name have separate schemas. New code or handlers require a separate request.
+Test one read tool before enabling a write tool. Preserve other keys in `tools`. Validate JSON and current schema before `set_customer_attribute_value`. Confirm the exact handler contract. The NAF configuration action `send_event` uses a separate schema from the Customer MCP tool `send_agent_event`. New code or handlers require a separate request.
 
 ## Customer email and SMS
 

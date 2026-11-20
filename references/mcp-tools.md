@@ -1,6 +1,6 @@
 # Customer MCP tools
 
-The Newo 1.30.0 catalog contains 56 tools. Live discovery confirmed mandatory `actor_id` on `send_event` and a separate `send_global_event`. See [tool-inventory.json](tool-inventory.json) for sources and verification. Check the current schema and access before calling.
+The Newo 1.30.0 catalog contains 57 tools, including `delete_connector`. `send_agent_event` requires `actor_id`, and `send_global_agent_event` has a separate connector-scoped signature. See [tool-inventory.json](tool-inventory.json) for schemas and annotations. Check the current schema and access before calling.
 
 The inventory records exact parameters, types, defaults, enums and numeric constraints. Tables list required arguments first and optional arguments after the divider. Pass the selected customer wherever the signature requires it. There is no universal scope parameter.
 
@@ -8,8 +8,8 @@ The inventory records exact parameters, types, defaults, enums and numeric const
 
 | Tool | Parameters | Contract and limits |
 | --- | --- | --- |
-| `get_customers` | None required; optional: `customer_idn`, `page`, `per`, `query`, `filters` | List accessible businesses. With `customer_idn`, return one business with its number, chat links, balance, Portal and billing links, and ignore other filters. Several `newo_chat` connectors can produce several chat links. |
-| `create_customer` | None required; optional: `source`, `agent_creator_idn`, `industry`, `referral`, `account_managers`, `technical_owners`, `linked_emails`, `external_owner_account_id`, `hash_external_account_id`, `partner_idn`, `partner_member_idn`, `external_customer_id`, `promo_code`, `empty` | Create the business and agent from `source` and purchase a number in standard mode. Save the latest customer IDN first. While `running`, poll the same `get_run`. Use only `empty` when explicitly asked for an empty business with a default project. |
+| `get_customers` | None required; optional: `customer_idn`, `page`, `per`, `query`, `filters` | List accessible businesses. With `customer_idn`, return one business with its number, chat links, balance and Portal dashboard link, and ignore other filters. Several `newo_chat` connectors can produce several chat links. |
+| `create_customer` | None required; optional: `source`, `agent_creator_idn`, `industry`, `referral`, `account_managers`, `technical_owners`, `linked_emails`, `external_owner_account_id`, `hash_external_account_id`, `partner_idn`, `partner_member_idn`, `external_customer_id`, `promo_code`, `empty` | Start creating the business and agent from `source` and purchase a number in standard mode. Save the latest customer IDN first. Standard creation returns a running `run_id`. Follow progress with `get_run`. Use only `empty` when explicitly asked for an empty business with a default project. |
 | `get_customer_usage` | `customer_idn`; optional: `start_at`, `end_at` | Subscription, period or phase, balance, usage, allowances, add-ons, daily voice and text figures and totals. Supply both dates for a range of up to 366 days. Defaults to the current billing cycle. |
 | `list_customer_accounts` | `customer_idn` | Linked accounts with email, name, role and `is_you`. Requires your own customer link. |
 | `unlink_account` | `customer_idn`; optional: `email` | Remove access for the selected account. Omitting email targets the caller. Unlinking someone else requires the owner role. |
@@ -38,7 +38,7 @@ The inventory records exact parameters, types, defaults, enums and numeric const
 | --- | --- | --- |
 | `read_project_version_files` | `customer_idn`, `project_version_id`; optional: `path` | Without `path`, return the file tree. With `path`, return text that can be truncated. Find project attributes in `project.yaml` or its references. Inspect accessible active or registry files for flow subscriptions and AKB agent IDs. |
 | `create_project_version` | `customer_idn`, `project_idn`; optional: `source_project_version_id`, `version_prefix` | Fork an accessible source version into a draft, including an accessible registry version. Omitting the source creates an empty `project.yaml`. Use a verified source when editing an existing agent. |
-| `write_project_version_files` | `customer_idn`, `project_version_id`; optional: `files`, `delete_paths` | Replace entire draft files. Supported workflows include targeted project attributes and the [dedicated external MCP OAuth2 project](agent-mcp-client.md). Published files can be read. |
+| `write_project_version_files` | `customer_idn`, `project_version_id`; optional: `files`, `delete_paths` | Replace entire draft files. Use for requested [agent code](agent-development.md), targeted project attributes and the [dedicated external MCP OAuth2 project](agent-mcp-client.md). Published files can be read. |
 | `delete_project_version` | `customer_idn`, `project_version_id` | Delete a version and its files. Active versions and registry versions in use are rejected. Outside plugin scope. |
 | `publish_project_version` | `customer_idn`, `project_version_id` | Validate and publish without activation. A validation error leaves state unchanged. Publication makes the version read-only. |
 | `activate_project_version` | `customer_idn`, `project_version_id` | Activate the exact version UUID. Repeating the active version runs `project_publish_finish`. Subscriptions determine effects. The tool requires a non-null version ID and has no all-project or `project_idn` mode. Use `external_event_id` to verify and `previous_project_version_id` to roll back. |
@@ -53,13 +53,14 @@ The inventory records exact parameters, types, defaults, enums and numeric const
 | `create_connector` | `customer_idn`, `integration_idn`, `connector_idn`, `title`; optional: `settings` | Create a stopped connector. Start it separately after checking for an equivalent existing connector. |
 | `update_connector` | `customer_idn`, `integration_idn`, `connector_idn`, `settings` | Send only changed fields. Omitted settings are preserved. Partial updates and rollback were verified on `api` and WebRTC. Phone and SMS connector writes go to their service immediately. See [integrations.md](integrations.md). |
 | `run_connector` | `customer_idn`, `integration_idn`, `connector_idn`; optional: `is_run` | `is_run=true` starts and `is_run=false` stops. Repeating the same state preserves it. The first start of a phone or SMS connector can purchase a number. |
+| `delete_connector` | `customer_idn`, `integration_idn`, `connector_idn` | Permanently delete a stopped connector and its webhooks and return the prior connector. Deleting a phone or SMS connector can release its number. See [connector deletion](integrations.md#delete-a-connector). |
 
 ## Events and messages
 
 | Tool | Parameters | Contract and limits |
 | --- | --- | --- |
-| `send_event` | `customer_idn`, `actor_id`, `event_idn`; optional: `arguments`, `external_event_id` | Raise an event from an actor on their connector and in their session. Get the `actor_id` UUID from `get_persona`, `send_message` or an act's `user_actor_id`. Returns `external_event_id` and `sent_at` before flows execute. Can trigger real calls, SMS or email. |
-| `send_global_event` | `customer_idn`, `integration_idn`, `connector_idn`, `event_idn`; optional: `arguments`, `external_event_id` | Raise a connector event without a caller or session on explicit request for a global event. Returns `external_event_id` and `sent_at` before flows execute. Can trigger real calls, SMS or email. |
+| `send_agent_event` | `customer_idn`, `actor_id`, `event_idn`; optional: `arguments`, `external_event_id` | Raise an event from an actor on their connector and in their session. Get the `actor_id` UUID from `get_persona`, `send_message` or an act's `user_actor_id`. Returns `external_event_id` and `sent_at` before flows execute. Can trigger real calls, SMS or email. |
+| `send_global_agent_event` | `customer_idn`, `integration_idn`, `connector_idn`, `event_idn`; optional: `arguments`, `external_event_id` | Raise a connector event without a caller or session on explicit request for a global event. Returns `external_event_id` and `sent_at` before flows execute. Can trigger real calls, SMS or email. |
 | `send_message` | `customer_idn`, `connector_idn`, `text`; optional: `actor_external_id`, `external_event_id` | Sandbox only. Omit `actor_external_id` for a new conversation or pass it to continue. Returns actor ID, actor external ID, event ID and `sent_at` before the reply. Read replies with `search_conversations`. |
 
 ## Outgoing webhooks
@@ -114,16 +115,16 @@ The inventory records exact parameters, types, defaults, enums and numeric const
 
 | Tool | Parameters | Contract and limits |
 | --- | --- | --- |
-| `search_akb_topics` | `customer_idn`, `project_idn`, `agent_idn`; optional: `labels`, `page`, `per` | List AKB topics newest first without text query. Label filters match case-insensitive substrings within a single label. Reduce `per` when results are truncated. |
-| `fuzzy_search_akb_topics` | `customer_idn`, `project_idn`, `agent_idn`, `query`; optional: `search_fields`, `score_threshold`, `topics_number`, `labels` | Semantic search for agent topics only. Returns `fields_score` with best results first. All labels must match exactly. MCP defaults to four fields and five topics. `SearchFuzzyAkb` normally uses facts and one topic, and can include caller topics. |
-| `create_akb_topic` | `customer_idn`, `project_idn`, `agent_idn`, `topic_summary`, `topic_facts`; optional: `topic_name`, `source`, `labels` | Create a summary and single-line facts. A matching name leaves the old topic in place. Available from the next conversation without publication. |
-| `delete_akb_topic` | `customer_idn`, `project_idn`, `agent_idn`, `topic_id` | Permanently delete the exact agent topic by `topic_id` and return the previous topic. In-place topic updates are unavailable. |
+| `list_knowledge_base_topics` | `customer_idn`, `project_idn`, `agent_idn`; optional: `labels`, `page`, `per` | List AKB topics newest first without text query. Label filters match case-insensitive substrings within a single label. Reduce `per` when results are truncated. |
+| `search_knowledge_base_topics` | `customer_idn`, `project_idn`, `agent_idn`, `query`; optional: `search_fields`, `score_threshold`, `topics_number`, `labels` | Semantic search for agent topics only. Returns `fields_score` with best results first. All labels must match exactly. MCP defaults to four fields and five topics. `SearchFuzzyAkb` normally uses facts and one topic, and can include caller topics. |
+| `create_knowledge_base_topic` | `customer_idn`, `project_idn`, `agent_idn`, `topic_summary`, `topic_facts`; optional: `topic_name`, `source`, `labels` | Create a summary and single-line facts. A matching name leaves the old topic in place. Available from the next conversation without publication. |
+| `delete_knowledge_base_topic` | `customer_idn`, `project_idn`, `agent_idn`, `topic_id` | Permanently delete the exact agent topic by `topic_id` and return the previous topic. In-place topic updates are unavailable. |
 
 ## Runs
 
 | Tool | Parameters | Contract and limits |
 | --- | --- | --- |
-| `get_run` | `run_id` | Get the state and result of `create_customer`. Takes only `run_id`. |
+| `get_run` | `run_id`; optional: `after_step` | Get creation status and ordered research steps. Pass the last `step_count` as `after_step` to fetch only new steps. The cursor defaults to `0`. |
 
 ## Verify results and handle errors
 
@@ -133,6 +134,6 @@ The server checks access on each request. Under `phi_restricted`, observe restri
 
 For procedures, see [creation](creation.md), [attributes and personas](configuration.md), [AKB](knowledge.md), [connectors and webhooks](integrations.md), [sandbox and diagnostics](testing.md), [versions](versions.md) and [statistics and units](quality-review.md). See [catalog limitations](missing-tools.md) for unavailable operations.
 
-See [project attributes](project-attributes.md) and [external MCP for an agent](agent-mcp-client.md). Customer MCP has no direct interface for Workflow Builder, Studio, general-purpose `send_command`, standalone number purchases or provisioning a test customer on demand. File tools support the documented project workflows. General development requires a separate request.
+See [project attributes](project-attributes.md), [agent development](agent-development.md) and [external MCP for an agent](agent-mcp-client.md). Customer MCP has no direct interface for Workflow Builder, Studio, general-purpose `send_command`, standalone number purchases or provisioning a test customer on demand. The [Python action reference](python-actions.md) describes the separate runtime contracts.
 
 Access requires an account link or eligible contractor record. Admin status alone does not grant access. Writes require an eligible role and account-link tools require your own link. Results around 70,000 characters can be truncated. Check `truncated`, list length and file completeness before overwriting. Agent AKB remains available for customers with BAA. Respect restrictions on caller data.

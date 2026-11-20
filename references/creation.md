@@ -16,18 +16,18 @@ Each call creates another customer. Standard creation purchases a phone number. 
 
 Before calling, read `get_customers(page=1, per=1)` without filters and retain only `items[0].idn` in the current context. Record a successful empty result as the baseline. A failed read leaves the baseline unknown.
 
-Call `create_customer` once. It can take about three minutes to respond. Keep the `run_id`, `state` and returned results. While `running`, poll the same UUID with `get_run(run_id)` at reasonable intervals and keep the user updated.
+Call `create_customer` once. Standard creation returns `run_id` and `state=running` while provisioning continues. Keep the run ID, state and returned progress. While running, poll the same run with `get_run` at reasonable intervals. Pass the last reported `step_count` as `after_step`, starting at `0` when no count is available. Share only new entries from `steps` in their returned order. Use `stage` and `question` to summarize the research. `step_number` and `max_steps` can describe progress within a stage. Keep the last known cursor if a reply omits it.
 
 | State | Action |
 | --- | --- |
-| `running` | Poll the same run and avoid a duplicate creation. |
+| `running` | Poll the same run with the latest progress cursor. |
 | `created` | Verify `customer_idn` with `get_customers` and share the available number and `portal_url`. |
 | `error` | Read the error. If creation could have started, check the latest customer IDN. |
 | `unknown` or lost response | Check the latest customer IDN to recover the outcome. |
 
 If the response contains `customer_idn`, read that customer's details first. Otherwise call `get_customers(page=1, per=1)` and compare the first IDN with the baseline. Treat a new IDN as a candidate. Use `get_customers(customer_idn=...)` to verify the business name and other available details against the request. Proceed when the match is confirmed. If the IDN is unchanged, the baseline is unknown or the match is ambiguous, the outcome remains uncertain. Resolve it before retrying.
 
-`get_run` takes only the run ID returned by `create_customer`. Use the agreed Creator.
+Pass the run ID from `create_customer` as `get_run.run_id`. `after_step` is the optional nonnegative progress cursor. Use the agreed Creator.
 
 ## Empty customer on explicit request
 
@@ -35,4 +35,4 @@ Use `empty: true` only when the user explicitly requests an empty customer. Pass
 
 ## Verify the result
 
-Report only returned values. Detailed `get_customers(customer_idn=...)` includes the available number, chat links, balance and Portal and billing links. Treat null as unknown. Multiple `chat_urls` are valid for multiple `newo_chat` connectors. Verify readiness after creation through customer attributes, a fresh sandbox response and, when requested, a real call. The sandbox cannot verify audio. If a test is unavailable, report that the customer was created and the test is pending.
+Report only returned values. Detailed `get_customers(customer_idn=...)` includes the available number, chat links, balance and Portal dashboard link. Treat null as unknown. Multiple `chat_urls` are valid for multiple `newo_chat` connectors. Verify readiness after creation through customer attributes, a fresh sandbox response and, when requested, a real call. The sandbox cannot verify audio. If a test is unavailable, report that the customer was created and the test is pending.

@@ -1,12 +1,12 @@
 # Capabilities and verification evidence
 
-The plugin includes nine skills for 56 Customer MCP tools. Contracts draw on the Newo 1.30.0 live schemas, owner clarifications and `customer_mcp_service` documentation. General integration metadata has been checked for the catalog, `mcp`, `newo_voice`, `email` and `newo_sms`. Customer tests are recorded separately.
+The plugin includes ten skills for 57 Customer MCP tools. Contracts draw on the Newo 1.30.0 live schemas and annotations, owner clarifications and `customer_mcp_service` documentation. General integration metadata has been checked for the catalog, `mcp`, `newo_voice`, `email` and `newo_sms`. Customer tests are recorded separately.
 
-The [inventory](tool-inventory.json) records source snapshots, additional sources and runtime checks. The [matrix](use-cases.json) defines 62 scenarios, initially `not_run` pending acceptance on the selected test customer. Verify scope and authorization for each business.
+The [inventory](tool-inventory.json) records source snapshots, additional sources and runtime checks. The [matrix](use-cases.json) defines 63 scenarios, initially `not_run` pending acceptance on the selected test customer. Verify scope and authorization for each business.
 
 ## Scope
 
-The skills cover agent creation and configuration, customer and persona attributes, AKB, connectors and webhooks, telephony, sandbox, diagnostics and rollout. Supported file operations include targeted project attributes and a dedicated external MCP OAuth2 project template.
+The skills cover agent creation and configuration, customer and persona attributes, AKB, connectors and webhooks, telephony, sandbox, diagnostics and rollout. Supported file operations include [Python agent development](agent-development.md), targeted project attributes and a dedicated external MCP OAuth2 project template. The development skill documents 77 [Script Runner actions](python-actions.md) available in the supplied source snapshot. They run inside Python skills and have separate contracts from the Customer MCP tool catalog.
 
 ## Before making changes
 

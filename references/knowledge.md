@@ -10,17 +10,17 @@ AKB requires `customer_idn`, `project_idn` and `agent_idn`. Locate the project w
 
 ## List and search topics
 
-`search_akb_topics` returns names, summaries, facts, sources and labels newest first. It has no text query. Pages start at 1 and `per` defaults to 20 with a maximum of 100. Reduce `per` on truncated summaries or facts. Report any remaining limit. Label search matches case-insensitive substrings, with multiple terms required within one label.
+`list_knowledge_base_topics` returns names, summaries, facts, sources and labels newest first. It has no text query. Pages start at 1 and `per` defaults to 20 with a maximum of 100. Reduce `per` on truncated summaries or facts. Report any remaining limit. Label search matches case-insensitive substrings, with multiple terms required within one label.
 
-`fuzzy_search_akb_topics` returns best matches and per-field `fields_score`. It supports `search_fields`, a threshold from 0 to 1, `topics_number` from 1 to 100 with default 5, and labels. All labels must match exactly.
+`search_knowledge_base_topics` returns best matches and per-field `fields_score`. It supports `search_fields`, a threshold from 0 to 1, `topics_number` from 1 to 100 with default 5, and labels. All labels must match exactly.
 
 To reproduce `SearchFuzzyAkb`, use the actual arguments from permitted logs and acts. MCP searches four fields and up to five topics by default. The agent action usually searches facts and takes one result. MCP searches agent topics only. The agent action can include caller topics unless limited by `fromPerson Agent`. MCP scores establish the result for that request. Use agent evidence for the actual retrieval and final answer.
 
 ## Add or replace a topic
 
-`create_akb_topic` requires `topic_summary` and an array of single-line `topic_facts`. It accepts optional `topic_name`, `source` and `labels`. The name defaults to the first fact. Save the returned topic ID and verify it by reading or searching. AKB can retrieve the topic from the next conversation without a separate publication.
+`create_knowledge_base_topic` requires `topic_summary` and an array of single-line `topic_facts`. It accepts optional `topic_name`, `source` and `labels`. The name defaults to the first fact. Save the returned topic ID and verify it by reading or searching. AKB can retrieve the topic from the next conversation without a separate publication.
 
-A matching name creates a second topic. There is no in-place update. For a requested correction, read the original fully. Prepare and verify the replacement, then delete the explicitly agreed original ID with `delete_akb_topic`. These writes can succeed independently. Creating first keeps the old content available until verification but can briefly duplicate it. Deleting first requires authorization and an acceptable gap. Verify each step. Deletion is permanent. After an uncertain creation, search for the topic before retrying.
+A matching name creates a second topic. There is no in-place update. For a requested correction, read the original fully. Prepare and verify the replacement, then delete the explicitly agreed original ID with `delete_knowledge_base_topic`. These writes can succeed independently. Creating first keeps the old content available until verification but can briefly duplicate it. Deleting first requires authorization and an acceptable gap. Verify each step. Deletion is permanent. After an uncertain creation, search for the topic before retrying.
 
 ## Import text and pages through existing attributes
 

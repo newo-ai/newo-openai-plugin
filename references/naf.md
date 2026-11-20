@@ -8,4 +8,6 @@ Customer MCP has no direct Workflow Builder interface. Make supported behavior c
 
 A registry project can have an active module version ID with an empty list of local versions. Reading its files and forking it require an accessible version. Null or inaccessible IDs leave those operations unavailable. See [versions.md](versions.md).
 
-[newo-external-mcp](../skills/newo-external-mcp/SKILL.md) provides a dedicated NAF project for external MCP OAuth2. Other NAF development, such as programmatic number provisioning, requires a separate request. Knowledge Studio is outside the catalog.
+SuperAgent arranges core NAF, extensions and integrations as distinct projects. Trace the owning project, agent, flow, subscription and skill in the active version. For requested code changes, use the [development guide](agent-development.md) and [Python action reference](python-actions.md). Runtime actions are called inside a skill. Customer MCP provides the separate customer configuration, file and version tools.
+
+[newo-external-mcp](../skills/newo-external-mcp/SKILL.md) provides a dedicated NAF project for external MCP OAuth2. Knowledge Studio is outside the catalog.

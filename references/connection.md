@@ -28,7 +28,7 @@ A user account and a business customer are separate entities. Most operations re
 | `not_found` | Verify the customer and IDs before taking further action. |
 | Write transport timeout | Check actual state and results before deciding whether to retry. |
 
-Catalog discovery confirmed 56 tools. General integration metadata has been checked. Verify access and scenarios for each customer separately.
+Catalog discovery confirmed 57 tools. General integration metadata has been checked. Verify access and scenarios for each customer separately.
 
 Use `list_customer_accounts` to inspect accounts. On an explicit unlink request, pass the target email to `unlink_account`. Omit email to unlink the current account. Unlinking another account requires the owner role.
 

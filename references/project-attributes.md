@@ -2,7 +2,7 @@
 
 Project attributes live in `project.yaml` or a referenced file. Use `read_project_version_files` and `write_project_version_files` to read, add, edit or remove their definitions. Customer attribute tools use a separate scope. A `project_` prefix alone does not establish scope.
 
-Use this procedure for a targeted change to a confirmed project attribute on explicit technical request. Editing flows, skills or dependencies requires a separate request. See [agent-mcp-client.md](agent-mcp-client.md) for a dedicated external MCP OAuth2 project.
+Use this procedure for a targeted change to a confirmed project attribute on explicit technical request. Use [agent-development.md](agent-development.md) for explicitly requested edits to flows, skills or dependencies. See [agent-mcp-client.md](agent-mcp-client.md) for a dedicated external MCP OAuth2 project.
 
 ## Read the actual definition
 

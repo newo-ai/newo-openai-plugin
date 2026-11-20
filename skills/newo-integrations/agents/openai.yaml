@@ -1,6 +1,6 @@
 interface:
   display_name: "Newo Integrations"
-  short_description: "Configure connectors, WebRTC and webhooks"
+  short_description: "Manage connectors, WebRTC and webhooks"
   default_prompt: "Use $newo-integrations to configure booking and reports for my agent."
 dependencies:
   tools:

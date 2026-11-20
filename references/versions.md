@@ -1,6 +1,6 @@
 # Apply settings, publish versions and initialize projects
 
-Use Customer MCP for all operations. Verify customer attribute writes and initialization separately. See [project-attributes.md](project-attributes.md) for targeted project attribute edits and [agent-mcp-client.md](agent-mcp-client.md) for the dedicated external MCP OAuth2 project.
+Use Customer MCP for all operations. Verify customer attribute writes and initialization separately. See [agent-development.md](agent-development.md) for Python agent code, [project-attributes.md](project-attributes.md) for targeted project attribute edits and [agent-mcp-client.md](agent-mcp-client.md) for the dedicated external MCP OAuth2 project.
 
 ## Save and apply
 

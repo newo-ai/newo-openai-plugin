@@ -36,7 +36,7 @@ Verify every agreed route with a live call and an available staff member. Treat 
 
 Collect the customer, country, number type (local, national, mobile or toll-free), locality or area code, voice and SMS needs, demo or production, current line retention and acceptable recurring cost. Use the current Newo response for availability, documents and timing. Keep identity or business documents out of chat.
 
-Prepare a draft provisioning or porting request marked “not sent.” Submission, tracking and number assignment are external. The owner confirmed that agent code can purchase a number for an existing customer. A standalone purchase tool and new purchase code are outside this workflow. A connector's first start can provision a number as a side effect. Provisioning follows service rules and cannot be done by overwriting a read-only attribute. After the user confirms assignment, verify the number and requested voice or SMS behavior. Releasing a number is outside the plugin.
+Prepare a draft provisioning or porting request marked “not sent.” Submission, tracking and number assignment are external. The owner confirmed that agent code can purchase a number for an existing customer. A standalone purchase tool and new purchase code are outside this workflow. A connector's first start can provision a number as a side effect. Provisioning follows service rules and cannot be done by overwriting a read-only attribute. After the user confirms assignment, verify the number and requested voice or SMS behavior. Deleting a phone or SMS connector can release its number. Follow the [connector deletion procedure](integrations.md#delete-a-connector) for that separately authorized action.
 
 ## Rollout
 

@@ -1,6 +1,6 @@
 # Rollout, acceptance and support
 
-Use the full procedure for a new rollout and the relevant shorter procedure for a single fix. Follow [operations.md](operations.md) throughout. General NAF development is outside this workflow.
+Use the full procedure for a new rollout and the relevant shorter procedure for a single fix. Follow [operations.md](operations.md) throughout. Route explicitly requested agent code changes to [newo-develop](../skills/newo-develop/SKILL.md).
 
 ## Requirements
 
